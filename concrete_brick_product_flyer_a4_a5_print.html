@@ -1,0 +1,3068 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>3D B&W Industrial Product Catalog — Responsive Visual Showcase A4 / A5</title>
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Be Vietnam Pro (VN), Chakra Petch (Industrial Display), Noto Sans Lao (LA), JetBrains Mono (Specs) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&family=Chakra+Petch:ital,wght@0,600;0,700;1,700&family=JetBrains+Mono:wght@500;600;700;800&family=Noto+Sans+Lao:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Dynamic @page CSS rule updated via JS for A4 vs A5 -->
+  <style id="dynamic-page-style">
+    @page {
+      size: A4 portrait;
+      margin: 0mm;
+    }
+  </style>
+
+  <style>
+    :root {
+      --font-vn: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+      --font-display: 'Chakra Petch', 'Be Vietnam Pro', sans-serif;
+      --font-la: 'Noto Sans Lao', 'Be Vietnam Pro', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #18181b;
+      background-image: radial-gradient(#27272a 1px, transparent 1px);
+      background-size: 16px 16px;
+      color: #000000;
+      overflow-x: hidden;
+    }
+
+    .lang-vn {
+      font-family: var(--font-vn);
+    }
+
+    .lang-vn .font-display {
+      font-family: var(--font-display);
+    }
+
+    .lang-la {
+      font-family: var(--font-la);
+      line-height: 1.35;
+    }
+
+    .lang-la .font-display {
+      font-family: var(--font-la);
+    }
+
+    .font-spec {
+      font-family: var(--font-mono);
+    }
+
+    /* ==========================================================================
+       HIGH-IMPACT BLACK & WHITE PRINT DESIGN SYSTEM (CLEAN BORDERS, NO SHADOWS)
+       Prints 100% crisp on any B&W Laser Printer or Photocopier
+       ========================================================================== */
+    .bw-card-3d {
+      background-color: #ffffff;
+      border: 2.2px solid #000000;
+      box-shadow: none;
+    }
+
+    .bw-card-3d-sm {
+      background-color: #ffffff;
+      border: 1.8px solid #000000;
+      box-shadow: none;
+    }
+
+    .bw-pill-3d {
+      background-color: #ffffff;
+      border: 1.5px solid #000000;
+      box-shadow: none;
+    }
+
+    /* Custom Meter & Steel Dashed Highlight Box */
+    .bw-pill-custom {
+      background-color: #ffffff;
+      border: 1.6px dashed #000000;
+      box-shadow: none;
+    }
+
+    /* Industrial 45-Degree Hazard Stripes (Pure #000000 & #FFFFFF) */
+    .bw-hazard-bar {
+      height: 4.5px;
+      width: 100%;
+      background: repeating-linear-gradient(
+        -45deg,
+        #000000 0px,
+        #000000 6px,
+        #ffffff 6px,
+        #ffffff 12px
+      );
+      border-top: 1.5px solid #000000;
+      border-bottom: 1.5px solid #000000;
+    }
+
+    /* Subtle Technical Dot Grid for Product Studio Showcase Frames */
+    .bw-cad-grid {
+      background-color: #ffffff;
+      background-image:
+        radial-gradient(circle at 50% 48%, rgba(255,255,255,0.96) 0%, rgba(255,255,255,0.55) 62%, transparent 100%),
+        radial-gradient(#000000 0.7px, transparent 0.7px);
+      background-size: 100% 100%, 11px 11px;
+    }
+
+    /* ==========================================================================
+       3 STRIKING B&W VISUAL MODES
+       1. editorial (Nổi bật - Đường viền sắc nét)
+       2. blueprint (Poster Đậm - Tương phản mạnh)
+       3. inksaver (Photocopy Siêu Nét - Tiết kiệm mực)
+       ========================================================================== */
+    [data-bw-mode="editorial"] .bw-hero-box {
+      background-color: #000000;
+      color: #ffffff;
+      border: 2.5px solid #000000;
+      box-shadow: none;
+    }
+    [data-bw-mode="editorial"] .bw-sec-ribbon {
+      background-color: #000000;
+      color: #ffffff;
+      border-bottom: 2px solid #000000;
+    }
+    [data-bw-mode="editorial"] .bw-sec-index {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1.5px solid #000000;
+      box-shadow: none;
+    }
+    [data-bw-mode="editorial"] .bw-tag-invert {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1px solid #000000;
+    }
+    [data-bw-mode="editorial"] .bw-series-head {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    [data-bw-mode="editorial"] .bw-dim-bar {
+      background-color: #000000;
+      color: #ffffff;
+    }
+
+    /* Mode 2: Poster Đậm (Tương phản mạnh) */
+    [data-bw-mode="blueprint"] .bw-hero-box {
+      background-color: #000000;
+      color: #ffffff;
+      border: 3px solid #000000;
+      box-shadow: none;
+    }
+    [data-bw-mode="blueprint"] .bw-sec-ribbon {
+      background-color: #000000;
+      color: #ffffff;
+      border-bottom: 2.5px solid #000000;
+    }
+    [data-bw-mode="blueprint"] .bw-sec-index {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1.5px solid #ffffff;
+    }
+    [data-bw-mode="blueprint"] .bw-tag-invert {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1.2px solid #000000;
+    }
+    [data-bw-mode="blueprint"] .bw-series-head {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    [data-bw-mode="blueprint"] .bw-dim-bar {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    [data-bw-mode="blueprint"] .bw-pill-3d {
+      background-color: #000000;
+      color: #ffffff;
+      border: 1.6px solid #000000;
+      box-shadow: none;
+    }
+    [data-bw-mode="blueprint"] .bw-pill-3d span {
+      color: #ffffff !important;
+    }
+    [data-bw-mode="blueprint"] .bw-pill-3d .bw-tag-invert {
+      background-color: #ffffff !important;
+      color: #000000 !important;
+    }
+
+    /* Mode 3: Photocopy Siêu Nét (Tiết kiệm 60% mực) */
+    [data-bw-mode="inksaver"] .bw-hero-box {
+      background-color: #ffffff;
+      color: #000000;
+      border: 2.5px solid #000000;
+      box-shadow: none;
+    }
+    [data-bw-mode="inksaver"] .bw-sec-ribbon {
+      background-color: #ffffff;
+      color: #000000;
+      border-bottom: 2.2px solid #000000;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        rgba(0,0,0,0.07),
+        rgba(0,0,0,0.07) 1.5px,
+        #ffffff 1.5px,
+        #ffffff 6px
+      );
+    }
+    [data-bw-mode="inksaver"] .bw-sec-index {
+      background-color: #000000;
+      color: #ffffff;
+    }
+    [data-bw-mode="inksaver"] .bw-tag-invert {
+      background-color: #ffffff;
+      color: #000000;
+      border: 1.5px solid #000000;
+    }
+    [data-bw-mode="inksaver"] .bw-series-head {
+      background-color: #ffffff;
+      color: #000000;
+      border-bottom: 2px solid #000000;
+    }
+    [data-bw-mode="inksaver"] .bw-dim-bar {
+      background-color: #ffffff;
+      color: #000000;
+      border-top: 1.6px solid #000000;
+    }
+    [data-bw-mode="inksaver"] .bw-cad-grid {
+      background-image: none !important;
+    }
+
+    /* ==========================================================================
+       B&W LASER PHOTO ENHANCEMENT FILTERS FOR UPLOADED PHOTOS (NO DROP SHADOW)
+       ========================================================================== */
+    .photo-filter-bw-crisp {
+      filter: grayscale(100%) contrast(1.38) brightness(0.96);
+    }
+    .photo-filter-color {
+      filter: none;
+    }
+
+    /* ==========================================================================
+       RESPONSIVE PAPER SHEET (FLUID ON MOBILE/TABLET, EXACT MM ON DESKTOP & PRINT)
+       ========================================================================== */
+    .paper-sheet {
+      background: #ffffff;
+      color: #000000;
+      margin: 0 auto;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 255, 255, 0.15);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 100%;
+      transition: max-width 0.2s ease, min-height 0.2s ease, padding 0.2s ease;
+    }
+
+    /* Mode 1: A4 1-Page Poster Brochure (Responsive up to 210mm x 297mm) */
+    .paper-sheet.layout-brochure-a4 {
+      max-width: 210mm;
+      min-height: 297mm;
+      padding: 4mm 5mm;
+    }
+
+    /* Mode 2: A4 24-Photo Detailed Catalog */
+    .paper-sheet.layout-catalog-24 {
+      max-width: 210mm;
+      min-height: 297mm;
+      padding: 5.5mm 6.5mm;
+    }
+
+    /* Mode 3: A5 Handout Flyer (Responsive up to 148mm x 210mm) */
+    .paper-sheet.layout-flyer-a5 {
+      max-width: 148mm;
+      min-height: 210mm;
+      padding: 3mm 4mm;
+    }
+
+    /* Product Image Heights in A4 Poster Mode (Extra Large & Prominent) */
+    .brick-showcase-img {
+      height: 158px;
+    }
+    .col-showcase-img {
+      height: 136px;
+    }
+    .pipe-showcase-img {
+      height: 148px;
+    }
+    .tank-showcase-img {
+      height: 148px;
+    }
+
+    @media screen and (max-width: 640px) {
+      .paper-sheet.layout-brochure-a4,
+      .paper-sheet.layout-catalog-24,
+      .paper-sheet.layout-flyer-a5 {
+        padding: 10px;
+        min-height: auto;
+      }
+      .brick-showcase-img {
+        height: 170px;
+      }
+      .col-showcase-img {
+        height: 160px;
+      }
+      .pipe-showcase-img,
+      .tank-showcase-img {
+        height: 175px;
+      }
+    }
+
+    /* Compact scaling rules when in A5 Flyer mode so everything fits 1 single A5 page cleanly */
+    .layout-flyer-a5 .bw-card-3d { box-shadow: none !important; border-width: 1.6px !important; }
+    .layout-flyer-a5 .bw-card-3d-sm { box-shadow: none !important; border-width: 1.4px !important; }
+    .layout-flyer-a5 .bw-pill-3d,
+    .layout-flyer-a5 .bw-pill-custom { box-shadow: none !important; border-width: 1.2px !important; }
+    .layout-flyer-a5 .bw-hazard-bar { height: 3.5px !important; }
+    .layout-flyer-a5 .a5-title { font-size: 0.86rem !important; line-height: 1.06 !important; }
+    .layout-flyer-a5 .a5-subtitle { font-size: 0.49rem !important; line-height: 1.1 !important; }
+    .layout-flyer-a5 .a5-sec-title { font-size: 0.6rem !important; }
+    .layout-flyer-a5 .a5-card-title { font-size: 0.58rem !important; }
+    .layout-flyer-a5 .a5-spec-text { font-size: 0.47rem !important; line-height: 1.08 !important; }
+    .layout-flyer-a5 .a5-badge { font-size: 0.44rem !important; padding: 0.5px 2.5px !important; }
+    .layout-flyer-a5 .brick-showcase-img { height: 96px !important; }
+    .layout-flyer-a5 .col-showcase-img { height: 84px !important; }
+    .layout-flyer-a5 .pipe-showcase-img,
+    .layout-flyer-a5 .tank-showcase-img { height: 92px !important; }
+    .layout-flyer-a5 .a5-fac-img { height: 42px !important; }
+    .layout-flyer-a5 .a5-pad { padding: 1.5px 3px !important; }
+    .layout-flyer-a5 .a5-gap { gap: 2.5px !important; }
+    .layout-flyer-a5 .a5-hide { display: none !important; }
+    .layout-flyer-a5 .a5-header-box { padding: 3px 4.5px !important; }
+    .layout-flyer-a5 .a5-logo { width: 30px !important; height: 30px !important; }
+    .layout-flyer-a5 .a5-qr { width: 25px !important; height: 25px !important; }
+
+    /* Interactive Contenteditable Styling */
+    [contenteditable="true"] {
+      outline: none;
+      border-radius: 2px;
+      transition: background-color 0.15s ease, box-shadow 0.15s ease;
+      cursor: text;
+    }
+    [contenteditable="true"]:hover {
+      background-color: rgba(128, 128, 128, 0.15);
+      box-shadow: 0 0 0 1px currentColor;
+    }
+    [contenteditable="true"]:focus {
+      background-color: rgba(128, 128, 128, 0.22);
+      box-shadow: 0 0 0 1.5px currentColor;
+    }
+
+    /* Interactive Product Photo Showcase Slot */
+    .photo-slot {
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      user-select: none;
+      background-color: #ffffff;
+      transition: box-shadow 0.15s ease;
+    }
+    .photo-slot:hover {
+      box-shadow: inset 0 0 0 2px #000000;
+    }
+    .photo-slot.drag-over {
+      background-color: #f4f4f5 !important;
+      box-shadow: inset 0 0 0 2.5px #000000 !important;
+    }
+    .photo-slot .slot-toolbar {
+      opacity: 0;
+      transform: translateY(2px);
+      transition: opacity 0.16s ease, transform 0.16s ease;
+    }
+    .photo-slot:hover .slot-toolbar {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .photo-slot .upload-pill {
+      opacity: 0;
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+    .photo-slot:hover .upload-pill {
+      opacity: 0.96;
+      transform: scale(1.02);
+    }
+
+    .photo-slot .cad-illustration {
+      transition: transform 0.2s ease;
+    }
+    .photo-slot:hover .cad-illustration {
+      transform: scale(1.03);
+    }
+
+    /* Blank Photo Frame Mode */
+    .blank-frames-mode .cad-illustration {
+      opacity: 0 !important;
+    }
+    .blank-frames-mode .bw-cad-grid {
+      background-image: none !important;
+      background-color: #ffffff !important;
+    }
+
+    /* Printable Order Checkbox Visibility */
+    .hide-order-checks .order-check-ui {
+      display: none !important;
+    }
+
+    /* Optional Spec / Dimension Line Visibility */
+    .hide-spec-dims .spec-dim-ui {
+      display: none !important;
+    }
+
+    /* STRICT PRINT MEDIA RULES (LOCKS EXACT A4/A5 DIMENSIONS & DESKTOP GRIDS) */
+    @media print {
+      html, body {
+        background: #ffffff !important;
+        color: #000000 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .workspace-viewport {
+        padding: 0 !important;
+        margin: 0 !important;
+        overflow: visible !important;
+        display: block !important;
+      }
+      .paper-sheet {
+        box-shadow: none !important;
+        margin: 0 !important;
+      }
+      .paper-sheet.layout-brochure-a4 {
+        width: 210mm !important;
+        height: 297mm !important;
+        padding: 4mm 5mm !important;
+        overflow: hidden !important;
+      }
+      .paper-sheet.layout-flyer-a5 {
+        width: 148mm !important;
+        height: 210mm !important;
+        padding: 3mm 4mm !important;
+        overflow: hidden !important;
+      }
+      .paper-sheet.layout-catalog-24 {
+        width: 210mm !important;
+        min-height: 297mm !important;
+        padding: 5.5mm 6.5mm !important;
+      }
+      .slot-toolbar,
+      .upload-pill {
+        display: none !important;
+      }
+      .photo-slot {
+        box-shadow: none !important;
+      }
+      [contenteditable="true"]:hover,
+      [contenteditable="true"]:focus {
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+      .print-avoid-break {
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+<body class="lang-vn min-h-screen flex flex-col" data-bw-mode="editorial">
+
+  <!-- Hidden File Inputs for Single, Batch Product Photo Upload & Config JSON Import -->
+  <input type="file" id="global-photo-input" accept="image/*" class="hidden" />
+  <input type="file" id="batch-photo-input" accept="image/*" multiple class="hidden" />
+  <input type="file" id="config-json-input" accept=".json,application/json" class="hidden" />
+
+  <!-- ==================== B&W LASER PRINT STUDIO BAR (HIDDEN WHEN PRINTING) ==================== -->
+  <header class="no-print sticky top-0 z-50 bg-zinc-950/95 backdrop-blur-md border-b border-zinc-800 text-white shadow-2xl">
+    <div class="max-w-[1460px] mx-auto px-2.5 sm:px-3 py-2 flex flex-wrap items-center justify-between gap-2">
+      
+      <!-- Brand Studio Identity -->
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded bg-white text-black border-2 border-black shadow-[2px_2px_0px_#a1a1aa] flex items-center justify-center font-black shrink-0">
+          <span class="font-spec text-xs tracking-tighter">3D•BW</span>
+        </div>
+        <div class="min-w-0">
+          <div class="flex items-center gap-1.5 flex-wrap">
+            <span class="text-xs font-extrabold uppercase tracking-wider text-white">Visual Product Poster Studio</span>
+            <span class="text-[10px] font-bold bg-white text-black px-1.5 py-0.5 rounded font-spec">RESPONSIVE • ẢNH LỚN</span>
+          </div>
+          <p id="ui-studio-sub" class="text-[11px] text-zinc-400 hidden sm:block truncate">Tương thích mọi màn hình • Ảnh sản phẩm siêu lớn • Cột bê tông tùy chọn Mét & Sắt • 1 ảnh đại diện cho Ống cống & Bể nước</p>
+        </div>
+      </div>
+
+      <!-- Studio Controls -->
+      <div class="flex flex-wrap items-center gap-1.5">
+
+        <!-- 1. STRICT 1-LANGUAGE SWITCHER (100% Vietnamese OR 100% Lao) -->
+        <div class="flex items-center bg-zinc-900 p-1 rounded-lg border border-zinc-700">
+          <button id="btn-lang-vn" onclick="setLanguage('vn')" class="px-2 py-1 rounded text-xs font-extrabold transition-all bg-white text-black shadow">
+            🇻🇳 Tiếng Việt
+          </button>
+          <button id="btn-lang-la" onclick="setLanguage('la')" class="px-2 py-1 rounded text-xs font-extrabold transition-all text-zinc-300 hover:text-white">
+            🇱🇦 ພາສາລາວ
+          </button>
+        </div>
+
+        <!-- 2. LAYOUT & PAPER MODE -->
+        <div class="flex items-center bg-zinc-900 p-1 rounded-lg border border-zinc-700">
+          <button id="btn-layout-brochure-a4" onclick="setLayout('brochure-a4')" class="px-2 py-1 rounded text-xs font-bold transition-all bg-white text-black shadow" title="1-Page A4 Visual Product Poster">
+            📐 A4 Poster
+          </button>
+          <button id="btn-layout-flyer-a5" onclick="setLayout('flyer-a5')" class="px-2 py-1 rounded text-xs font-bold transition-all text-zinc-300 hover:text-white" title="Compact 1-Page A5 Handout Flyer">
+            📄 A5 Tờ Rơi
+          </button>
+          <button id="btn-layout-catalog-24" onclick="setLayout('catalog-24')" class="px-2 py-1 rounded text-xs font-bold transition-all text-zinc-300 hover:text-white" title="Full 24-Item Individual Large Photo Catalog">
+            🖼️ 24 Ô Ảnh
+          </button>
+        </div>
+
+        <!-- 3. 3D B&W VISUAL IMPACT STYLE SELECTOR -->
+        <div class="flex items-center bg-zinc-900 p-1 rounded-lg border border-zinc-700">
+          <button id="btn-bw-editorial" onclick="setBwMode('editorial')" class="px-2 py-1 rounded text-[11px] font-bold transition-all bg-white text-black shadow">
+            🔥 <span id="ui-bw-editorial">Nổi bật 3D</span>
+          </button>
+          <button id="btn-bw-blueprint" onclick="setBwMode('blueprint')" class="px-2 py-1 rounded text-[11px] font-bold transition-all text-zinc-300 hover:text-white">
+            ⚡ <span id="ui-bw-blueprint">Poster Đậm</span>
+          </button>
+          <button id="btn-bw-inksaver" onclick="setBwMode('inksaver')" class="px-2 py-1 rounded text-[11px] font-bold transition-all text-zinc-300 hover:text-white">
+            ⬜ <span id="ui-bw-inksaver">Tiết kiệm mực</span>
+          </button>
+        </div>
+
+        <!-- 4. UPLOADED PHOTO B&W FILTER OPTIMIZER -->
+        <div class="flex items-center bg-zinc-900 p-1 rounded-lg border border-zinc-700">
+          <button id="btn-filter-bw-crisp" onclick="setPhotoFilter('bw-crisp')" class="px-2 py-1 rounded text-[11px] font-bold transition-all bg-white text-black shadow">
+            📷 <span id="ui-filter-crisp">Đen trắng nét</span>
+          </button>
+          <button id="btn-filter-color" onclick="setPhotoFilter('color')" class="px-2 py-1 rounded text-[11px] font-bold transition-all text-zinc-300 hover:text-white">
+            🌈 <span id="ui-filter-color">Màu gốc</span>
+          </button>
+        </div>
+
+        <!-- 5. BATCH UPLOAD MULTIPLE PHOTOS AT ONCE -->
+        <button onclick="triggerBatchUpload()" class="px-2 py-1.5 rounded-lg text-xs font-bold bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-100 transition-all" title="Chọn nhiều ảnh sản phẩm từ máy để tự động điền vào các ô trống">
+          📁 <span id="ui-batch-btn">Tải nhiều ảnh</span>
+        </button>
+
+        <!-- 6. TOGGLE SPEC DIMENSION BAR -->
+        <button id="btn-toggle-dims" onclick="toggleSpecDims()" class="px-2 py-1.5 rounded-lg text-xs font-bold bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-100 transition-all">
+          📏 <span id="ui-dims-toggle">Dòng KT: ẨN</span>
+        </button>
+
+        <!-- 7. ORDER CHECKBOXES TOGGLE -->
+        <button id="btn-toggle-checks" onclick="toggleOrderChecks()" class="px-2 py-1.5 rounded-lg text-xs font-bold bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-100 transition-all">
+          ☑️ <span id="ui-checks-toggle">Ô tích: BẬT</span>
+        </button>
+
+        <!-- 8. TOGGLE 3D CAD DRAWINGS vs BLANK WHITE PHOTO BOXES -->
+        <button id="btn-toggle-cad" onclick="toggleBlankFrames()" class="px-2 py-1.5 rounded-lg text-xs font-bold bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-100 transition-all">
+          ✏️ <span id="ui-cad-toggle">Khung trắng: TẮT</span>
+        </button>
+
+        <!-- 9. PRINT / EXPORT PDF BUTTON -->
+        <button onclick="window.print()" class="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-black bg-white hover:bg-zinc-200 text-black border-2 border-white shadow-lg cursor-pointer transition-all">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
+          </svg>
+          <span id="ui-print-btn">IN / PDF</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Secondary Helper Strip & Persistence Controls -->
+    <div class="bg-zinc-900/95 border-t border-zinc-800 px-3 py-1 text-[11px] text-zinc-400">
+      <div class="max-w-[1460px] mx-auto flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5 flex-wrap">
+          <span id="ui-save-status" class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/90 text-emerald-300 border border-emerald-700/60 font-spec text-[10.5px] font-bold">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+            <span id="ui-save-status-text">Đã tự động lưu</span>
+          </span>
+          <span id="ui-helper-1" class="text-zinc-300 font-medium">Mọi cài đặt, vị trí kéo ảnh (X, Y) và mức thu phóng (Zoom %) đều được tự động lưu lại khi tải lại trang.</span>
+        </div>
+        <div class="flex items-center gap-1.5 flex-wrap">
+          <button onclick="manualSaveNow()" class="text-[11px] px-2 py-0.5 rounded bg-white text-black hover:bg-zinc-200 font-bold border border-white transition-colors cursor-pointer" title="Lưu toàn bộ cài đặt, vị trí ảnh và thu phóng ngay lập tức">
+            💾 <span id="ui-save-now-btn">Lưu cài đặt</span>
+          </button>
+          <button onclick="exportConfigJson()" class="text-[11px] px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-600 transition-colors cursor-pointer" title="Tải file sao lưu (.json) chứa toàn bộ cài đặt, vị trí ảnh & thu phóng">
+            📤 <span id="ui-export-btn">Xuất file lưu</span>
+          </button>
+          <button onclick="triggerImportConfigJson()" class="text-[11px] px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-600 transition-colors cursor-pointer" title="Nạp lại file cấu hình (.json) đã lưu">
+            📥 <span id="ui-import-btn">Nạp file lưu</span>
+          </button>
+          <button onclick="setFacilityMode(state.facilityMode === 'full' ? 'compact' : 'full')" class="text-[11px] px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-200 border border-zinc-600 transition-colors cursor-pointer">
+            🏭 <span id="ui-fac-toggle-label">2 Cơ sở: Thanh gọn</span>
+          </button>
+          <button onclick="resetCatalogData()" class="text-[11px] px-2 py-0.5 rounded bg-zinc-800 hover:bg-zinc-700 text-zinc-300 border border-zinc-700 transition-colors cursor-pointer">
+            ↺ <span id="ui-reset-btn">Khôi phục mặc định</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== RESPONSIVE PRINTABLE WORKSPACE ==================== -->
+  <main class="workspace-viewport flex-1 py-3 sm:py-5 px-2 sm:px-4 flex justify-center items-start w-full">
+
+    <!-- THE PRINTABLE A4 / A5 SHEET -->
+    <article id="printable-sheet" class="paper-sheet layout-brochure-a4">
+
+      <!-- ==================== 1. RESPONSIVE COMPACT HERO HEADER ==================== -->
+      <header class="print-avoid-break">
+        <div class="bw-hero-box overflow-hidden relative">
+          <div class="bw-hazard-bar"></div>
+
+          <div class="px-2.5 py-1.5 a5-header-box grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-2 items-center a5-gap">
+            
+            <!-- Left (8 Cols): Logo + Bold Headline -->
+            <div class="md:col-span-8 print:col-span-8 flex items-center gap-2.5 a5-gap">
+              <div
+                id="slot-logo"
+                class="photo-slot w-11 h-11 a5-logo border-2 border-black bg-white text-black flex flex-col items-center justify-center shrink-0"
+                onclick="handleSlotClick(event, 'logo')"
+                ondragover="onSlotDragOver(event, this)"
+                ondragleave="onSlotDragLeave(event, this)"
+                ondrop="onSlotDrop(event, 'logo', this)"
+              ></div>
+
+              <div class="min-w-0 flex-1">
+                <div class="flex items-center gap-1.5 flex-wrap">
+                  <span class="inline-flex items-center gap-1 bg-white text-black border border-black text-[8px] font-black uppercase tracking-wider px-1.5 py-0.2 a5-badge">
+                    <span>★</span>
+                    <span
+                      id="edit-header-kicker"
+                      contenteditable="true"
+                      spellcheck="false"
+                      oninput="saveHeaderFooter('kicker', this.innerText)"
+                    ></span>
+                  </span>
+                  <span
+                    id="edit-header-iso"
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveHeaderFooter('iso', this.innerText)"
+                    class="inline-block border border-current text-[7.5px] font-extrabold px-1.5 py-0.2 font-spec a5-badge"
+                  ></span>
+                </div>
+
+                <h1
+                  id="edit-header-title"
+                  contenteditable="true"
+                  spellcheck="false"
+                  oninput="saveHeaderFooter('title', this.innerText)"
+                  class="font-display text-[15px] sm:text-[18px] print:text-[18px] font-black tracking-tight uppercase leading-tight mt-0.5 a5-title"
+                ></h1>
+
+                <p
+                  id="edit-header-subtitle"
+                  contenteditable="true"
+                  spellcheck="false"
+                  oninput="saveHeaderFooter('subtitle', this.innerText)"
+                  class="text-[8.5px] font-bold mt-0.5 opacity-95 leading-tight sm:truncate print:truncate a5-subtitle"
+                ></p>
+              </div>
+            </div>
+
+            <!-- Right (4 Cols): Compact 2-Factory Badge -->
+            <div class="md:col-span-4 print:col-span-4">
+              <div class="bg-white text-black border-2 border-black px-2 py-1 a5-pad flex items-center gap-2 relative">
+                <div class="w-8 h-8 shrink-0 flex items-center justify-center relative a5-hide">
+                  <svg viewBox="0 0 60 60" class="w-8 h-8">
+                    <polygon points="30,1 37,7 46,4 49,13 58,16 55,25 60,33 53,40 54,49 45,51 41,59 32,55 24,60 19,52 9,52 9,42 1,37 6,28 2,19 11,15 12,5 21,8" fill="#000000" />
+                    <circle cx="30" cy="30" r="20" fill="none" stroke="#ffffff" stroke-width="1.2" stroke-dasharray="2,1.5"/>
+                    <text x="30" y="27" text-anchor="middle" fill="#ffffff" font-size="11" font-weight="900" font-family="monospace">2 CS</text>
+                    <text x="30" y="38" text-anchor="middle" fill="#ffffff" font-size="6.8" font-weight="900">SẴN HÀNG</text>
+                  </svg>
+                </div>
+                <div class="min-w-0 flex-1">
+                  <div
+                    id="edit-dual-badge-title"
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveHeaderFooter('dualBadgeTitle', this.innerText)"
+                    class="text-[9px] font-black uppercase tracking-tight text-black leading-tight truncate a5-card-title"
+                  ></div>
+                  <div
+                    id="edit-dual-badge-desc"
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveHeaderFooter('dualBadgeDesc', this.innerText)"
+                    class="text-[8px] text-black font-semibold leading-tight mt-0.5 truncate a5-spec-text"
+                  ></div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </header>
+
+      <!-- ==================== 2. DYNAMIC PRODUCT SHOWCASE CONTENT ==================== -->
+      <div id="catalog-main-container" class="flex-1 flex flex-col justify-between gap-2 my-1.5 a5-gap">
+        <!-- Populated dynamically by renderAll() -->
+      </div>
+
+      <!-- ==================== 3. RESPONSIVE COMPACT DISPATCH FOOTER ==================== -->
+      <footer class="print-avoid-break">
+        <div class="bw-card-3d bg-white overflow-hidden">
+          <div class="p-1.5 a5-pad grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-1.5 items-stretch a5-gap">
+            
+            <!-- Left (4 Cols): Giant Hotline Callout -->
+            <div class="md:col-span-4 print:col-span-4 bw-series-head px-2 py-1 a5-pad border-2 border-black flex flex-col justify-center">
+              <div class="flex items-center justify-between gap-1">
+                <span
+                  id="edit-footer-hotline-label"
+                  contenteditable="true"
+                  spellcheck="false"
+                  oninput="saveHeaderFooter('hotlineLabel', this.innerText)"
+                  class="text-[7.5px] font-black uppercase tracking-wider bg-white text-black px-1.5 py-0.2 border border-black a5-badge"
+                ></span>
+                <span class="text-[7.5px] font-spec font-extrabold uppercase border border-current px-1 a5-hide">24/7</span>
+              </div>
+              <div
+                id="edit-footer-phone"
+                contenteditable="true"
+                spellcheck="false"
+                oninput="saveHeaderFooter('phone', this.innerText)"
+                class="font-display text-[13px] sm:text-[14px] font-black tracking-tight mt-0.5 leading-none a5-card-title"
+              ></div>
+              <div
+                id="edit-footer-note"
+                contenteditable="true"
+                spellcheck="false"
+                oninput="saveHeaderFooter('footerNote', this.innerText)"
+                class="text-[7.5px] font-bold mt-0.5 truncate opacity-95 a5-hide"
+              ></div>
+            </div>
+
+            <!-- Middle (6 Cols): Facility 1 & Facility 2 Direct Dispatch -->
+            <div class="md:col-span-6 print:col-span-6 grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 gap-1.5 a5-gap">
+              <div class="bw-card-3d-sm bg-white px-2 py-1 a5-pad flex flex-col justify-center">
+                <div class="flex items-center justify-between gap-1 border-b border-black pb-0.5">
+                  <span class="inline-flex items-center gap-1 text-[8px] font-black uppercase text-black a5-badge">
+                    <span class="bg-black text-white px-1 font-spec">CS1</span>
+                    <span id="edit-footer-f1-title" contenteditable="true" spellcheck="false" oninput="saveFacilityEdit('fac1', 'name', this.innerText)" class="truncate max-w-[110px]"></span>
+                  </span>
+                  <span
+                    id="edit-footer-f1-phone"
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveFacilityEdit('fac1', 'phone', this.innerText)"
+                    class="text-[8px] font-extrabold font-spec text-black shrink-0 a5-spec-text"
+                  ></span>
+                </div>
+                <div
+                  id="edit-footer-f1-addr"
+                  contenteditable="true"
+                  spellcheck="false"
+                  oninput="saveFacilityEdit('fac1', 'address', this.innerText)"
+                  class="text-[7.5px] font-bold text-black leading-tight mt-0.5 truncate a5-spec-text"
+                ></div>
+              </div>
+
+              <div class="bw-card-3d-sm bg-white px-2 py-1 a5-pad flex flex-col justify-center">
+                <div class="flex items-center justify-between gap-1 border-b border-black pb-0.5">
+                  <span class="inline-flex items-center gap-1 text-[8px] font-black uppercase text-black a5-badge">
+                    <span class="bg-black text-white px-1 font-spec">CS2</span>
+                    <span id="edit-footer-f2-title" contenteditable="true" spellcheck="false" oninput="saveFacilityEdit('fac2', 'name', this.innerText)" class="truncate max-w-[110px]"></span>
+                  </span>
+                  <span
+                    id="edit-footer-f2-phone"
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveFacilityEdit('fac2', 'phone', this.innerText)"
+                    class="text-[8px] font-extrabold font-spec text-black shrink-0 a5-spec-text"
+                  ></span>
+                </div>
+                <div
+                  id="edit-footer-f2-addr"
+                  contenteditable="true"
+                  spellcheck="false"
+                  oninput="saveFacilityEdit('fac2', 'address', this.innerText)"
+                  class="text-[7.5px] font-bold text-black leading-tight mt-0.5 truncate a5-spec-text"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Right (2 Cols): Dual QR Code Slots -->
+            <div class="md:col-span-2 print:col-span-2 flex items-center justify-start md:justify-end print:justify-end gap-1.5 shrink-0">
+              <div
+                id="slot-qr-1"
+                class="photo-slot w-10 h-10 a5-qr bw-card-3d-sm bg-white flex flex-col items-center justify-center shrink-0"
+                onclick="handleSlotClick(event, 'qr-1')"
+                ondragover="onSlotDragOver(event, this)"
+                ondragleave="onSlotDragLeave(event, this)"
+                ondrop="onSlotDrop(event, 'qr-1', this)"
+              ></div>
+
+              <div
+                id="slot-qr-2"
+                class="photo-slot w-10 h-10 a5-qr bw-card-3d-sm bg-white flex flex-col items-center justify-center shrink-0"
+                onclick="handleSlotClick(event, 'qr-2')"
+                ondragover="onSlotDragOver(event, this)"
+                ondragleave="onSlotDragLeave(event, this)"
+                ondrop="onSlotDrop(event, 'qr-2', this)"
+              ></div>
+            </div>
+
+          </div>
+          <div class="bw-hazard-bar"></div>
+        </div>
+      </footer>
+
+    </article>
+  </main>
+
+  <!-- ==================== APPLICATION LOGIC & 3D PRODUCT VISUAL ENGINE ==================== -->
+  <script>
+    // ============================================================================
+    // 1. STATE & CONCISE PRODUCT DATA (MINIMAL TEXT, LARGE IMAGES, CUSTOM METER/STEEL)
+    // ============================================================================
+    const defaultUploadedPhotos = {
+      'brochure-brick-lo': {
+        url: 'images/Ga%CC%A3ch%20lo%CC%82%CC%83.png',
+        fit: 'contain',
+        scale: 1.18,
+        x: 0,
+        y: 2,
+        filter: 'bw-crisp'
+      },
+      'cat24-brick-lo': {
+        url: 'images/Ga%CC%A3ch%20lo%CC%82%CC%83.png',
+        fit: 'contain',
+        scale: 1.18,
+        x: 0,
+        y: 2,
+        filter: 'bw-crisp'
+      },
+      'brochure-brick-20': {
+        url: 'images/Ga%CC%A3ch%2020.png',
+        fit: 'contain',
+        scale: 1.24,
+        x: 0,
+        y: 6,
+        filter: 'bw-crisp'
+      },
+      'cat24-brick-20': {
+        url: 'images/Ga%CC%A3ch%2020.png',
+        fit: 'contain',
+        scale: 1.24,
+        x: 0,
+        y: 6,
+        filter: 'bw-crisp'
+      },
+      'series-col-series-10': {
+        url: 'images/Co%CC%A3%CC%82t%2010.png',
+        fit: 'contain',
+        scale: 1.15,
+        x: 0,
+        y: 0,
+        filter: 'bw-crisp'
+      },
+      'cat24-col-10-2m': {
+        url: 'images/Co%CC%A3%CC%82t%2010.png',
+        fit: 'contain',
+        scale: 1.15,
+        x: 0,
+        y: 0,
+        filter: 'bw-crisp'
+      },
+      'cat24-col-10-2.5m': {
+        url: 'images/Co%CC%A3%CC%82t%2010.png',
+        fit: 'contain',
+        scale: 1.15,
+        x: 0,
+        y: 0,
+        filter: 'bw-crisp'
+      },
+      'showcase-pipes': {
+        url: 'images/Co%CC%82%CC%81ng.png',
+        fit: 'contain',
+        scale: 1.58,
+        x: 0,
+        y: -4,
+        filter: 'bw-crisp'
+      },
+      'cat24-pipe-20': {
+        url: 'images/Co%CC%82%CC%81ng.png',
+        fit: 'contain',
+        scale: 1.58,
+        x: 0,
+        y: -4,
+        filter: 'bw-crisp'
+      },
+      'cat24-pipe-30': {
+        url: 'images/Co%CC%82%CC%81ng.png',
+        fit: 'contain',
+        scale: 1.58,
+        x: 0,
+        y: -4,
+        filter: 'bw-crisp'
+      },
+      'cat24-pipe-40': {
+        url: 'images/Co%CC%82%CC%81ng.png',
+        fit: 'contain',
+        scale: 1.58,
+        x: 0,
+        y: -4,
+        filter: 'bw-crisp'
+      },
+      'cat24-pipe-60': {
+        url: 'images/Co%CC%82%CC%81ng.png',
+        fit: 'contain',
+        scale: 1.58,
+        x: 0,
+        y: -4,
+        filter: 'bw-crisp'
+      },
+      'showcase-tanks': {
+        url: 'images/Theng%20na%CC%A3%CC%82m.png',
+        fit: 'contain',
+        scale: 1.48,
+        x: 0,
+        y: 2,
+        filter: 'bw-crisp'
+      },
+      'cat24-tank-80': {
+        url: 'images/Theng%20na%CC%A3%CC%82m.png',
+        fit: 'contain',
+        scale: 1.48,
+        x: 0,
+        y: 2,
+        filter: 'bw-crisp'
+      },
+      'cat24-tank-100': {
+        url: 'images/Theng%20na%CC%A3%CC%82m.png',
+        fit: 'contain',
+        scale: 1.48,
+        x: 0,
+        y: 2,
+        filter: 'bw-crisp'
+      }
+    };
+
+    const state = {
+      lang: 'vn',                 // 'vn' (100% Vietnamese) or 'la' (100% Lao)
+      layout: 'brochure-a4',      // 'brochure-a4' | 'flyer-a5' | 'catalog-24'
+      bwMode: 'editorial',        // 'editorial' | 'blueprint' | 'inksaver'
+      photoFilter: 'bw-crisp',    // 'bw-crisp' | 'color'
+      facilityMode: 'compact',    // 'compact' (Sleek 1-line strip) | 'full' (Includes 2 Factory Photo Frames)
+      showOrderChecks: true,      // Printable [ ] tick boxes
+      showSpecDims: false,        // Minimized by default so product images & titles are ultra-clean
+      blankFrames: false,         // Hide 3D CAD illustrations for blank white frames
+      activeSlotId: null,
+      uploadedPhotos: JSON.parse(JSON.stringify(defaultUploadedPhotos)), // Pre-loaded with real product photos
+      headerFooter: {
+        vn: {
+          kicker: 'XƯỞNG ĐÚC BÊ TÔNG TRỰC TIẾP',
+          iso: 'CHUẨN KỸ THUẬT',
+          title: 'GẠCH KHÔNG NUNG • CỘT BÊ TÔNG • ỐNG CỐNG • BỂ NƯỚC',
+          subtitle: 'Sản xuất trực tiếp tại 2 xưởng — Nhận đặt cột bê tông chiều dài (Mét) & cốt sắt theo yêu cầu — Giao tận nơi',
+          dualBadgeTitle: 'HỆ THỐNG 2 XƯỞNG LỚN',
+          dualBadgeDesc: 'Giao nhanh từ xưởng gần nhất',
+          hotlineLabel: 'HOTLINE / WHATSAPP',
+          phone: '020 9999 8888 • 020 5555 6666',
+          footerNote: '🚚 Xe cẩu giao tận nơi • Tích [✓] chọn sản phẩm'
+        },
+        la: {
+          kicker: 'ໂຮງງານຜະລິດໂດຍກົງ',
+          iso: 'ມາດຕະຖານສູງ',
+          title: 'ດິນບັອກ • ເສົາເບຕົງ • ທໍ່ລະບາຍນ້ຳ • ຖັງນ້ຳສຳເລັດຮູບ',
+          subtitle: 'ຜະລິດໂດຍກົງຈາກ 2 ໂຮງງານ — ຮັບສັ່ງເສົາເບຕົງຕາມຄວາມຍາວ (ແມັດ) ແລະ ຂະໜາດເຫຼັກ — ຈັດສົ່ງເຖິງໜ້າວຽກ',
+          dualBadgeTitle: 'ລະບົບ 2 ໂຮງງານຜະລິດ',
+          dualBadgeDesc: 'ຈັດສົ່ງໄວຈາກສາຂາໃກ້ສຸດ',
+          hotlineLabel: 'ສາຍດ່ວນ / WHATSAPP',
+          phone: '020 9999 8888 • 020 5555 6666',
+          footerNote: '🚚 ຈັດສົ່ງເຖິງໜ້າວຽກ • ໝາຍ [✓] ລາຍການທີ່ຕ້ອງການ'
+        }
+      },
+      facilities: {
+        vn: {
+          sectionBadge: '2 NHÀ MÁY',
+          sectionTitle: 'NĂNG LỰC CUNG ỨNG NHANH TỪ 2 CƠ SỞ SẢN XUẤT',
+          benefits: [
+            { id: 'ben-1', num: '01', title: 'SẢN LƯỢNG X2 – LUÔN SẴN HÀNG' },
+            { id: 'ben-2', num: '02', title: 'GIAO NHANH TỪ XƯỞNG GẦN NHẤT' },
+            { id: 'ben-3', num: '03', title: 'NHẬN ĐẶT MÉT & CỐT SẮT THEO YÊU CẦU' }
+          ],
+          fac1: {
+            code: 'CS-01',
+            name: 'CƠ SỞ 01 (XƯỞNG TRUNG TÂM)',
+            address: 'Đ/c: Bản ...................., Huyện ...................., Tỉnh ....................',
+            phone: '020 9999 8888',
+            qrLabel: 'QR CS1'
+          },
+          fac2: {
+            code: 'CS-02',
+            name: 'CƠ SỞ 02 (XƯỞNG MỞ RỘNG)',
+            address: 'Đ/c: Bản ...................., Huyện ...................., Tỉnh ....................',
+            phone: '020 5555 6666',
+            qrLabel: 'QR CS2'
+          }
+        },
+        la: {
+          sectionBadge: '2 ໂຮງງານ',
+          sectionTitle: 'ກຳລັງການຜະລິດສູງ ຈາກລະບົບ 2 ໂຮງງານມາດຕະຖານ',
+          benefits: [
+            { id: 'ben-1', num: '01', title: 'ກຳລັງຜະລິດ X2 – ສິນຄ້າພ້ອມສົ່ງ' },
+            { id: 'ben-2', num: '02', title: 'ຈັດສົ່ງໄວ ຈາກສາຂາທີ່ໃກ້ທີ່ສຸດ' },
+            { id: 'ben-3', num: '03', title: 'ຮັບສັ່ງຄວາມຍາວ (ແມັດ) & ເຫຼັກຕາມສັ່ງ' }
+          ],
+          fac1: {
+            code: 'CS-01',
+            name: 'ໂຮງງານ 01 (ສາຂາຫຼັກ)',
+            address: 'ບ້ານ ...................., ເມືອງ ...................., ແຂວງ ....................',
+            phone: '020 9999 8888',
+            qrLabel: 'QR 1'
+          },
+          fac2: {
+            code: 'CS-02',
+            name: 'ໂຮງງານ 02 (ສາຂາຂະຫຍາຍ)',
+            address: 'ບ້ານ ...................., ເມືອງ ...................., ແຂວງ ....................',
+            phone: '020 5555 6666',
+            qrLabel: 'QR 2'
+          }
+        }
+      },
+      productEdits: {
+        vn: {},
+        la: {}
+      }
+    };
+
+    const uiLabels = {
+      vn: {
+        studioSub: 'Tương thích mọi màn hình • Ảnh sản phẩm siêu lớn • Cột bê tông tùy chọn Mét & Sắt • 1 ảnh đại diện cho Ống cống & Bể nước',
+        bwEditorial: 'Nổi bật 3D',
+        bwInksaver: 'Tiết kiệm mực',
+        bwBlueprint: 'Poster Đậm',
+        filterCrisp: 'Đen trắng nét',
+        filterColor: 'Màu gốc',
+        batchBtn: 'Tải nhiều ảnh',
+        dimsOn: 'Dòng KT: HIỆN',
+        dimsOff: 'Dòng KT: ẨN',
+        checksOn: 'Ô tích: BẬT',
+        checksOff: 'Ô tích: TẮT',
+        cadOn: 'Khung trắng: TẮT',
+        cadOff: 'Khung trắng: BẬT',
+        facShowImg: '2 Cơ sở: Hiện 2 ảnh xưởng',
+        facCompactOnly: '2 Cơ sở: Thanh gọn',
+        printBtn: 'IN / PDF',
+        helper1: 'Mọi cài đặt, vị trí kéo ảnh (X, Y) và mức thu phóng (Zoom %) đều được tự động lưu lại khi tải lại trang.',
+        saveStatusSaved: 'Đã tự động lưu',
+        saveStatusSaving: 'Đang lưu...',
+        saveNowBtn: 'Lưu cài đặt',
+        exportBtn: 'Xuất file lưu',
+        importBtn: 'Nạp file lưu',
+        resetBtn: 'Khôi phục mặc định',
+        clickUpload: '📷 Chọn ảnh',
+        fac1PhotoHint: '📷 Ảnh Xưởng 1',
+        fac2PhotoHint: '📷 Ảnh Xưởng 2',
+        unitPrefix: 'ĐVT:',
+        qtyLabel: 'SL:',
+        sec1Title: 'GẠCH KHÔNG NUNG (4 LOẠI)',
+        sec2Title: 'CỘT BÊ TÔNG ĐÚC SẴN',
+        sec2CustomBadge: '★ TÙY CHỌN MÉT & SẮT THEO YÊU CẦU',
+        addColSpecBtn: '+ Thêm Mét / Sắt',
+        sec3Title: 'ỐNG CỐNG LY TÂM (Ø20 – Ø60)',
+        sec4Title: 'THENG NẬM / BỂ NƯỚC (Ø80 – Ø100)'
+      },
+      la: {
+        studioSub: 'ຮອງຮັບທຸກໜ້າຈໍ • ຮູບສິນຄ້າຂະໜາດໃຫຍ່ • ເສົາເບຕົງເລືອກແມັດ & ເຫຼັກໄດ້ • 1 ຮູບຕົວແທນສຳລັບທໍ່ ແລະ ຖັງນ້ຳ',
+        bwEditorial: 'ໂດດເດັ່ນ 3D',
+        bwInksaver: 'ປະຢັດໝຶກ',
+        bwBlueprint: 'Poster ເຂັ້ມ',
+        filterCrisp: 'ຂາວ-ດຳຄົມຊັດ',
+        filterColor: 'ສີຕົ້ນສະບັບ',
+        batchBtn: 'ອັບໂຫຼດຫຼາຍຮູບ',
+        dimsOn: 'ຂະໜາດ: ສະແດງ',
+        dimsOff: 'ຂະໜາດ: ເຊື່ອງ',
+        checksOn: 'ໝາຍຕິກ: ເປີດ',
+        checksOff: 'ໝາຍຕິກ: ປິດ',
+        cadOn: 'ກອບຂາວ: ປິດ',
+        cadOff: 'ກອບຂາວ: ເປີດ',
+        facShowImg: '2 ໂຮງງານ: ສະແດງຮູບ',
+        facCompactOnly: '2 ໂຮງງານ: ແຖບກະທັດຮັດ',
+        printBtn: 'ພິມ / PDF',
+        helper1: 'ທຸກການຕັ້ງຄ່າ, ຕຳແໜ່ງຮູບ (X, Y) ແລະ ລະດັບການຊູມ (Zoom %) ຖືກບັນທຶກອັດຕະໂນມັດ.',
+        saveStatusSaved: 'ບັນທຶກອັດຕະໂນມັດແລ້ວ',
+        saveStatusSaving: 'ກຳລັງບັນທຶກ...',
+        saveNowBtn: 'ບັນທຶກ',
+        exportBtn: 'ສົ່ງອອກໄຟລ໌',
+        importBtn: 'ນຳເຂົ້າໄຟລ໌',
+        resetBtn: 'ຄືນຄ່າເລີ່ມຕົ້ນ',
+        clickUpload: '📷 ເລືອກຮູບ',
+        fac1PhotoHint: '📷 ຮູບໂຮງງານ 1',
+        fac2PhotoHint: '📷 ຮູບໂຮງງານ 2',
+        unitPrefix: 'ຫົວໜ່ວຍ:',
+        qtyLabel: 'ຈຳນວນ:',
+        sec1Title: 'ດິນບັອກກໍ່ສ້າງ (4 ຂະໜາດ)',
+        sec2Title: 'ເສົາເບຕົງສຳເລັດຮູບ',
+        sec2CustomBadge: '★ ຮັບສັ່ງຄວາມຍາວ (ແມັດ) & ຂະໜາດເຫຼັກ',
+        addColSpecBtn: '+ ເພີ່ມ ແມັດ / ເຫຼັກ',
+        sec3Title: 'ທໍ່ລະບາຍນ້ຳເບຕົງ (Ø20 – Ø60)',
+        sec4Title: 'ຖັງນ້ຳຊີມັງສຳເລັດຮູບ (Ø80 – Ø100)'
+      }
+    };
+
+    // ============================================================================
+    // 2. PRODUCT DATABASE (WITH CUSTOM METER & STEEL FOR COLUMNS)
+    // ============================================================================
+    const bricksData = [
+      {
+        id: 'brick-dac',
+        code: '01',
+        cadType: 'brick-solid',
+        vn: {
+          name: 'Gạch đặc',
+          unit: 'Viên',
+          ribbon: 'ĐẶC',
+          dim: 'KT: ....... × ....... × ....... cm'
+        },
+        la: {
+          name: 'ດິນບັອກຕັນ',
+          unit: 'ກ້ອນ',
+          ribbon: 'ບັອກຕັນ',
+          dim: 'ຂະໜາດ: ....... × ....... × ....... cm'
+        }
+      },
+      {
+        id: 'brick-lo',
+        code: '02',
+        cadType: 'brick-hollow',
+        vn: {
+          name: 'Gạch lỗ',
+          unit: 'Viên',
+          ribbon: '3 LỖ',
+          dim: 'KT: ....... × ....... × ....... cm'
+        },
+        la: {
+          name: 'ດິນບັອກຮູ',
+          unit: 'ກ້ອນ',
+          ribbon: '3 ຮູ',
+          dim: 'ຂະໜາດ: ....... × ....... × ....... cm'
+        }
+      },
+      {
+        id: 'brick-15',
+        code: '03',
+        cadType: 'brick-15',
+        vn: {
+          name: 'Gạch 15',
+          unit: 'Viên',
+          ribbon: '15 CM',
+          dim: 'KT: ....... × 15 × ....... cm'
+        },
+        la: {
+          name: 'ດິນບັອກ 15',
+          unit: 'ກ້ອນ',
+          ribbon: '15 CM',
+          dim: 'ຂະໜາດ: ....... × 15 × ....... cm'
+        }
+      },
+      {
+        id: 'brick-20',
+        code: '04',
+        cadType: 'brick-20',
+        vn: {
+          name: 'Gạch 20',
+          unit: 'Viên',
+          ribbon: '20 CM',
+          dim: 'KT: ....... × 20 × ....... cm'
+        },
+        la: {
+          name: 'ດິນບັອກ 20',
+          unit: 'ກ້ອນ',
+          ribbon: '20 CM',
+          dim: 'ຂະໜາດ: ....... × 20 × ....... cm'
+        }
+      }
+    ];
+
+    const defaultColumnSeriesData = [
+      {
+        seriesId: 'col-series-10',
+        cadType: 'col-10',
+        sectionDim: '10×10 CM',
+        vn: {
+          title: 'CỘT 10',
+          unit: 'Mét',
+          customMeter: 'Dài: ......m',
+          customSteel: 'Sắt: Ø......'
+        },
+        la: {
+          title: 'ເສົາ 10',
+          unit: 'ແມັດ',
+          customMeter: 'ຍາວ: ......m',
+          customSteel: 'ເຫຼັກ: Ø......'
+        },
+        items: [
+          {
+            id: 'col-10-2m',
+            cadType: 'col-10',
+            lenBadge: '2.0M',
+            vn: { name: 'Cột 10 - 2m', shortName: '2.0m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '10×10cm • 2.0m' },
+            la: { name: 'ເສົາ 10 - 2m', shortName: '2.0m', tag: 'ເຫຼັກມາດຕະຖານ', unit: 'ແມັດ', dim: '10×10cm • 2.0m' }
+          },
+          {
+            id: 'col-10-2.5m',
+            cadType: 'col-10',
+            lenBadge: '2.5M',
+            vn: { name: 'Cột 10 - 2.5m', shortName: '2.5m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '10×10cm • 2.5m' },
+            la: { name: 'ເສົາ 10 - 2.5m', shortName: '2.5m', tag: 'ເຫຼັກມາດຕະຖານ', unit: 'ແມັດ', dim: '10×10cm • 2.5m' }
+          }
+        ]
+      },
+      {
+        seriesId: 'col-series-12',
+        cadType: 'col-12',
+        sectionDim: '12×12 CM',
+        vn: {
+          title: 'CỘT 12',
+          unit: 'Mét',
+          customMeter: 'Dài: ......m',
+          customSteel: 'Sắt: Ø......'
+        },
+        la: {
+          title: 'ເສົາ 12',
+          unit: 'ແມັດ',
+          customMeter: 'ຍາວ: ......m',
+          customSteel: 'ເຫຼັກ: Ø......'
+        },
+        items: [
+          {
+            id: 'col-12-2.5m-nho',
+            cadType: 'col-12',
+            lenBadge: '2.5M',
+            vn: { name: 'Cột 12 - 2.5m (Sắt nhỏ)', shortName: '2.5m', tag: 'Sắt nhỏ', unit: 'Mét', dim: '12×12cm • 2.5m (Sắt nhỏ)' },
+            la: { name: 'ເສົາ 12 - 2.5m (ເຫຼັກນ້ອຍ)', shortName: '2.5m', tag: 'ເຫຼັກນ້ອຍ', unit: 'ແມັດ', dim: '12×12cm • 2.5m (ເຫຼັກນ້ອຍ)' }
+          },
+          {
+            id: 'col-12-2.5m-to',
+            cadType: 'col-12',
+            lenBadge: '2.5M',
+            vn: { name: 'Cột 12 - 2.5m (Sắt to)', shortName: '2.5m', tag: 'Sắt to', unit: 'Mét', dim: '12×12cm • 2.5m (Sắt to)' },
+            la: { name: 'ເສົາ 12 - 2.5m (ເຫຼັກໃຫຍ່)', shortName: '2.5m', tag: 'ເຫຼັກໃຫຍ່', unit: 'ແມັດ', dim: '12×12cm • 2.5m (ເຫຼັກໃຫຍ່)' }
+          },
+          {
+            id: 'col-12-3m',
+            cadType: 'col-12',
+            lenBadge: '3.0M',
+            vn: { name: 'Cột 12 - 3m', shortName: '3.0m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '12×12cm • 3.0m' },
+            la: { name: 'ເສົາ 12 - 3m', shortName: '3.0m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '12×12cm • 3.0m' }
+          },
+          {
+            id: 'col-12-3.5m',
+            cadType: 'col-12',
+            lenBadge: '3.5M',
+            vn: { name: 'Cột 12 - 3.5m', shortName: '3.5m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '12×12cm • 3.5m' },
+            la: { name: 'ເສົາ 12 - 3.5m', shortName: '3.5m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '12×12cm • 3.5m' }
+          },
+          {
+            id: 'col-12-4m',
+            cadType: 'col-12',
+            lenBadge: '4.0M',
+            vn: { name: 'Cột 12 - 4m', shortName: '4.0m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '12×12cm • 4.0m' },
+            la: { name: 'ເສົາ 12 - 4m', shortName: '4.0m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '12×12cm • 4.0m' }
+          },
+          {
+            id: 'col-12-4.5m',
+            cadType: 'col-12',
+            lenBadge: '4.5M',
+            vn: { name: 'Cột 12 - 4.5m', shortName: '4.5m', tag: 'Chịu lực', unit: 'Mét', dim: '12×12cm • 4.5m' },
+            la: { name: 'ເສົາ 12 - 4.5m', shortName: '4.5m', tag: 'ຮັບນ້ຳໜັກ', unit: 'ແມັດ', dim: '12×12cm • 4.5m' }
+          }
+        ]
+      },
+      {
+        seriesId: 'col-series-15',
+        cadType: 'col-15',
+        sectionDim: '15×15 CM',
+        vn: {
+          title: 'CỘT 15',
+          unit: 'Mét',
+          customMeter: 'Dài: ......m',
+          customSteel: 'Sắt: Ø......'
+        },
+        la: {
+          title: 'ເສົາ 15',
+          unit: 'ແມັດ',
+          customMeter: 'ຍາວ: ......m',
+          customSteel: 'ເຫຼັກ: Ø......'
+        },
+        items: [
+          {
+            id: 'col-15-3m',
+            cadType: 'col-15',
+            lenBadge: '3.0M',
+            vn: { name: 'Cột 15 - 3m', shortName: '3.0m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '15×15cm • 3.0m' },
+            la: { name: 'ເສົາ 15 - 3m', shortName: '3.0m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '15×15cm • 3.0m' }
+          },
+          {
+            id: 'col-15-3.5m',
+            cadType: 'col-15',
+            lenBadge: '3.5M',
+            vn: { name: 'Cột 15 - 3.5m', shortName: '3.5m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '15×15cm • 3.5m' },
+            la: { name: 'ເສົາ 15 - 3.5m', shortName: '3.5m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '15×15cm • 3.5m' }
+          },
+          {
+            id: 'col-15-4m',
+            cadType: 'col-15',
+            lenBadge: '4.0M',
+            vn: { name: 'Cột 15 - 4m', shortName: '4.0m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '15×15cm • 4.0m' },
+            la: { name: 'ເສົາ 15 - 4m', shortName: '4.0m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '15×15cm • 4.0m' }
+          },
+          {
+            id: 'col-15-4.5m',
+            cadType: 'col-15',
+            lenBadge: '4.5M',
+            vn: { name: 'Cột 15 - 4.5m', shortName: '4.5m', tag: 'Sắt chuẩn', unit: 'Mét', dim: '15×15cm • 4.5m' },
+            la: { name: 'ເສົາ 15 - 4.5m', shortName: '4.5m', tag: 'ມາດຕະຖານ', unit: 'ແມັດ', dim: '15×15cm • 4.5m' }
+          },
+          {
+            id: 'col-15-5m-sat10',
+            cadType: 'col-15',
+            lenBadge: '5.0M',
+            vn: { name: 'Cột 15 - 5m (Sắt 10)', shortName: '5.0m', tag: 'Sắt 10', unit: 'Mét', dim: '15×15cm • 5.0m (Sắt 10)' },
+            la: { name: 'ເສົາ 15 - 5m (ເຫຼັກ 10)', shortName: '5.0m', tag: 'ເຫຼັກ 10', unit: 'ແມັດ', dim: '15×15cm • 5.0m (ເຫຼັກ 10)' }
+          },
+          {
+            id: 'col-15-5m-sat12',
+            cadType: 'col-15',
+            lenBadge: '5.0M',
+            vn: { name: 'Cột 15 - 5m (Sắt 12)', shortName: '5.0m', tag: 'Sắt 12', unit: 'Mét', dim: '15×15cm • 5.0m (Sắt 12)' },
+            la: { name: 'ເສົາ 15 - 5m (ເຫຼັກ 12)', shortName: '5.0m', tag: 'ເຫຼັກ 12', unit: 'ແມັດ', dim: '15×15cm • 5.0m (ເຫຼັກ 12)' }
+          }
+        ]
+      }
+    ];
+
+    let columnSeriesData = JSON.parse(JSON.stringify(defaultColumnSeriesData));
+
+    const pipesData = [
+      {
+        id: 'pipe-20',
+        code: '01',
+        cadType: 'pipe-20',
+        diaNumber: 20,
+        vn: { name: 'Cống 20', badge: 'Ø20', unit: 'Cái', dim: 'Ø20cm × ........m' },
+        la: { name: 'ທໍ່ 20', badge: 'Ø20', unit: 'ໜ່ວຍ', dim: 'Ø20cm × ........m' }
+      },
+      {
+        id: 'pipe-30',
+        code: '02',
+        cadType: 'pipe-30',
+        diaNumber: 30,
+        vn: { name: 'Cống 30', badge: 'Ø30', unit: 'Cái', dim: 'Ø30cm × ........m' },
+        la: { name: 'ທໍ່ 30', badge: 'Ø30', unit: 'ໜ່ວຍ', dim: 'Ø30cm × ........m' }
+      },
+      {
+        id: 'pipe-40',
+        code: '03',
+        cadType: 'pipe-40',
+        diaNumber: 40,
+        vn: { name: 'Cống 40', badge: 'Ø40', unit: 'Cái', dim: 'Ø40cm × ........m' },
+        la: { name: 'ທໍ່ 40', badge: 'Ø40', unit: 'ໜ່ວຍ', dim: 'Ø40cm × ........m' }
+      },
+      {
+        id: 'pipe-60',
+        code: '04',
+        cadType: 'pipe-60',
+        diaNumber: 60,
+        vn: { name: 'Cống 60', badge: 'Ø60', unit: 'Cái', dim: 'Ø60cm × ........m' },
+        la: { name: 'ທໍ່ 60', badge: 'Ø60', unit: 'ໜ່ວຍ', dim: 'Ø60cm × ........m' }
+      }
+    ];
+
+    const tanksData = [
+      {
+        id: 'tank-80',
+        code: '01',
+        cadType: 'tank-80',
+        diaNumber: 80,
+        vn: { name: 'Theng nậm 80', badge: 'Ø80', unit: 'Cái', dim: 'Ø80cm × Cao ........cm' },
+        la: { name: 'ຖັງນ້ຳ 80', badge: 'Ø80', unit: 'ໜ່ວຍ', dim: 'Ø80cm × ສູງ ........cm' }
+      },
+      {
+        id: 'tank-100',
+        code: '02',
+        cadType: 'tank-100',
+        diaNumber: 100,
+        vn: { name: 'Theng nậm 100', badge: 'Ø100', unit: 'Cái', dim: 'Ø100cm × Cao ........cm' },
+        la: { name: 'ຖັງນ້ຳ 100', badge: 'Ø100', unit: 'ໜ່ວຍ', dim: 'Ø100cm × ສູງ ........cm' }
+      }
+    ];
+
+    // ============================================================================
+    // 3. STUDIO-GRADE 3D PRODUCT ILLUSTRATIONS (INCLUDING PANORAMIC GROUP SHOWCASES)
+    // ============================================================================
+    function getCadSvg(type) {
+      const defs = `
+        <defs>
+          <pattern id="hatchDense" width="4" height="4" patternTransform="rotate(45 0 0)" patternUnits="userSpaceOnUse">
+            <line x1="0" y1="0" x2="0" y2="4" stroke="#000000" stroke-width="1.2" />
+          </pattern>
+          <pattern id="concreteDots" width="7" height="7" patternUnits="userSpaceOnUse">
+            <circle cx="1.5" cy="1.5" r="0.65" fill="#000000" />
+            <circle cx="5" cy="4" r="0.5" fill="#000000" />
+            <circle cx="2.5" cy="6" r="0.45" fill="#000000" />
+          </pattern>
+        </defs>
+      `;
+
+      switch (type) {
+        case 'factory-1':
+          return `
+            <svg viewBox="0 0 220 96" class="w-full h-full cad-illustration">
+              ${defs}
+              <rect x="14" y="14" width="20" height="64" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+              <ellipse cx="24" cy="14" rx="10" ry="4" fill="#000000"/>
+              <rect x="38" y="20" width="20" height="58" fill="url(#hatchDense)" stroke="#000000" stroke-width="2"/>
+              <ellipse cx="48" cy="20" rx="10" ry="4" fill="#000000"/>
+              <polygon points="64,78 64,34 104,16 144,34 144,78" fill="#ffffff" stroke="#000000" stroke-width="2.2" stroke-linejoin="round"/>
+              <rect x="88" y="48" width="32" height="30" fill="#000000"/>
+              <rect x="154" y="46" width="24" height="32" fill="url(#hatchDense)" stroke="#000000" stroke-width="1.8"/>
+              <rect x="182" y="36" width="24" height="42" fill="#000000" stroke="#000000" stroke-width="1.8"/>
+              <line x1="8" y1="79" x2="212" y2="79" stroke="#000000" stroke-width="2.5"/>
+            </svg>`;
+
+        case 'factory-2':
+          return `
+            <svg viewBox="0 0 220 96" class="w-full h-full cad-illustration">
+              ${defs}
+              <polygon points="14,78 14,34 56,16 98,34 98,78" fill="#ffffff" stroke="#000000" stroke-width="2.2" stroke-linejoin="round"/>
+              <rect x="40" y="48" width="30" height="30" fill="#000000"/>
+              <line x1="110" y1="78" x2="110" y2="18" stroke="#000000" stroke-width="2.5"/>
+              <line x1="200" y1="78" x2="200" y2="18" stroke="#000000" stroke-width="2.5"/>
+              <line x1="104" y1="22" x2="206" y2="22" stroke="#000000" stroke-width="3.5"/>
+              <circle cx="136" cy="65" r="12" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+              <circle cx="136" cy="65" r="5.5" fill="#000000"/>
+              <circle cx="164" cy="65" r="12" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+              <circle cx="164" cy="65" r="5.5" fill="#000000"/>
+              <circle cx="150" cy="44" r="12" fill="url(#hatchDense)" stroke="#000000" stroke-width="2"/>
+              <circle cx="150" cy="44" r="5.5" fill="#000000"/>
+              <line x1="8" y1="79" x2="212" y2="79" stroke="#000000" stroke-width="2.5"/>
+            </svg>`;
+
+        case 'brick-solid':
+          return `
+            <svg viewBox="0 0 220 135" class="w-full h-full cad-illustration">
+              ${defs}
+              <polygon points="18,52 114,10 198,42 102,84" fill="#ffffff" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="24,52 114,13 191,42 102,81" fill="url(#concreteDots)" opacity="0.65"/>
+              <polygon points="52,50 114,23 164,42 102,69" fill="url(#hatchDense)" stroke="#000000" stroke-width="1.8" stroke-linejoin="round"/>
+              <polygon points="58,50 114,26 156,42 102,65" fill="#ffffff" stroke="#000000" stroke-width="1.2"/>
+              <polygon points="18,52 102,84 102,119 18,87" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="102,84 198,42 198,77 102,119" fill="#000000" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <line x1="106" y1="88" x2="193" y2="50" stroke="#ffffff" stroke-width="1.4" opacity="0.8"/>
+              <line x1="106" y1="112" x2="193" y2="74" stroke="#ffffff" stroke-width="1" opacity="0.45"/>
+            </svg>`;
+
+        case 'brick-hollow':
+          return `
+            <svg viewBox="0 0 220 135" class="w-full h-full cad-illustration">
+              ${defs}
+              <polygon points="18,50 114,8 198,40 102,82" fill="#ffffff" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="24,50 114,11 191,40 102,79" fill="url(#concreteDots)" opacity="0.55"/>
+              <polygon points="18,50 102,82 102,118 18,86" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="44,60 52,63 52,99 44,96" fill="#000000"/>
+              <polygon points="70,70 78,73 78,109 70,106" fill="#000000"/>
+              <polygon points="102,82 198,40 198,76 102,118" fill="#000000" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <line x1="106" y1="86" x2="193" y2="48" stroke="#ffffff" stroke-width="1.4" opacity="0.8"/>
+              <ellipse cx="83" cy="53" rx="20" ry="10.5" transform="rotate(-21 83 53)" fill="#000000" stroke="#000000" stroke-width="2.2"/>
+              <path d="M66,50 A20,10.5 -21 0,1 100,47" fill="none" stroke="#ffffff" stroke-width="1.7"/>
+              <ellipse cx="134" cy="31" rx="20" ry="10.5" transform="rotate(-21 134 31)" fill="#000000" stroke="#000000" stroke-width="2.2"/>
+              <path d="M117,28 A20,10.5 -21 0,1 151,25" fill="none" stroke="#ffffff" stroke-width="1.7"/>
+            </svg>`;
+
+        case 'brick-15':
+          return `
+            <svg viewBox="0 0 220 135" class="w-full h-full cad-illustration">
+              ${defs}
+              <polygon points="14,48 106,6 204,44 112,86" fill="#ffffff" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="20,48 106,9 198,44 112,83" fill="url(#concreteDots)" opacity="0.55"/>
+              <polygon points="14,48 112,86 112,122 14,84" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="112,86 204,44 204,80 112,122" fill="#000000" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <line x1="116" y1="90" x2="199" y2="52" stroke="#ffffff" stroke-width="1.4" opacity="0.8"/>
+              <polygon points="44,46 96,22 122,32 70,56" fill="#000000" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="96" y1="22" x2="96" y2="40" stroke="#ffffff" stroke-width="1.5"/>
+              <polygon points="86,62 138,38 164,48 112,72" fill="#000000" stroke="#000000" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="138" y1="38" x2="138" y2="56" stroke="#ffffff" stroke-width="1.5"/>
+            </svg>`;
+
+        case 'brick-20':
+          return `
+            <svg viewBox="0 0 220 135" class="w-full h-full cad-illustration">
+              ${defs}
+              <polygon points="10,48 104,4 208,46 114,90" fill="#ffffff" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="16,48 104,7 202,46 114,87" fill="url(#concreteDots)" opacity="0.55"/>
+              <polygon points="10,48 114,90 114,125 10,83" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <polygon points="114,90 208,46 208,81 114,125" fill="#000000" stroke="#000000" stroke-width="2.8" stroke-linejoin="round"/>
+              <line x1="118" y1="94" x2="203" y2="54" stroke="#ffffff" stroke-width="1.4" opacity="0.8"/>
+              <polygon points="36,44 70,28 88,35 54,51" fill="#000000"/>
+              <polygon points="62,55 96,39 114,46 80,62" fill="#000000"/>
+              <polygon points="88,66 122,50 140,57 106,73" fill="#000000"/>
+              <polygon points="78,24 110,9 128,16 96,31" fill="#000000"/>
+              <polygon points="104,35 136,20 154,27 122,42" fill="#000000"/>
+              <polygon points="130,46 162,31 180,38 148,53" fill="#000000"/>
+            </svg>`;
+
+        case 'col-10':
+        case 'col-12':
+        case 'col-15':
+          const is10 = type === 'col-10';
+          const is12 = type === 'col-12';
+          const beamH = is10 ? 24 : is12 ? 29 : 35;
+          const yTop = is10 ? 60 : is12 ? 55 : 49;
+          const secSize = is10 ? 32 : is12 ? 36 : 42;
+          return `
+            <svg viewBox="0 0 240 125" class="w-full h-full cad-illustration">
+              ${defs}
+              <polygon points="12,${yTop} 146,10 176,23 42,${yTop + 13}" fill="#ffffff" stroke="#000000" stroke-width="2.6" stroke-linejoin="round"/>
+              <polygon points="16,${yTop} 146,13 172,23 42,${yTop + 10}" fill="url(#concreteDots)" opacity="0.6"/>
+              <polygon points="12,${yTop} 42,${yTop + 13} 42,${yTop + 13 + beamH} 12,${yTop + beamH}" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.6" stroke-linejoin="round"/>
+              <polygon points="42,${yTop + 13} 176,23 176,${23 + beamH} 42,${yTop + 13 + beamH}" fill="#000000" stroke="#000000" stroke-width="2.6" stroke-linejoin="round"/>
+              <line x1="46" y1="${yTop + 16}" x2="172" y2="27" stroke="#ffffff" stroke-width="1.3" opacity="0.8"/>
+              <!-- Exposed 3D Steel Rebar Cage & Stirrups -->
+              <polygon points="182,20 200,12 200,${12 + beamH - 6} 182,${20 + beamH - 6}" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="2.5,1.5"/>
+              <polygon points="198,13 216,5 216,${5 + beamH - 6} 198,${13 + beamH - 6}" fill="none" stroke="#000000" stroke-width="2" stroke-dasharray="2.5,1.5"/>
+              <line x1="158" y1="18" x2="226" y2="-7" stroke="#000000" stroke-width="3.8" stroke-linecap="round"/>
+              <line x1="170" y1="25" x2="235" y2="0" stroke="#000000" stroke-width="3.8" stroke-linecap="round"/>
+              <line x1="158" y1="${18 + beamH - 8}" x2="226" y2="${-7 + beamH - 8}" stroke="#000000" stroke-width="3.8" stroke-linecap="round"/>
+              <line x1="170" y1="${25 + beamH - 8}" x2="235" y2="${0 + beamH - 8}" stroke="#000000" stroke-width="3.8" stroke-linecap="round"/>
+              <!-- Zoomed Cross-Section Rebar Detail Diagram -->
+              <g transform="translate(12, 8)">
+                <rect x="0" y="0" width="${secSize}" height="${secSize}" fill="#ffffff" stroke="#000000" stroke-width="2.4"/>
+                <rect x="5" y="5" width="${secSize - 10}" height="${secSize - 10}" fill="none" stroke="#000000" stroke-width="1.5" stroke-dasharray="2,1.5"/>
+                <circle cx="7" cy="7" r="3" fill="#000000"/>
+                <circle cx="${secSize - 7}" cy="7" r="3" fill="#000000"/>
+                <circle cx="7" cy="${secSize - 7}" r="3" fill="#000000"/>
+                <circle cx="${secSize - 7}" cy="${secSize - 7}" r="3" fill="#000000"/>
+              </g>
+            </svg>`;
+
+        case 'pipe-group':
+          // Panoramic 1-Image Showcase of Centrifugal Concrete Pipes (Ø20, Ø30, Ø40, Ø60)
+          return `
+            <svg viewBox="0 0 380 135" class="w-full h-full cad-illustration">
+              ${defs}
+
+              <!-- Pipe 1: Ø20 (Compact) -->
+              <g transform="translate(14, 42) scale(0.65)">
+                <path d="M40,22 L118,22 A22,36 0 0,1 118,98 L40,98 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="3"/>
+                <path d="M40,76 L124,76 A22,36 0 0,1 118,98 L40,98 Z" fill="#000000"/>
+                <ellipse cx="40" cy="60" rx="24" ry="40" fill="#ffffff" stroke="#000000" stroke-width="3"/>
+                <ellipse cx="38" cy="60" rx="14" ry="24" fill="#000000"/>
+                <text x="86" y="64" text-anchor="middle" fill="#000000" font-size="20" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="4" paint-order="stroke">Ø20</text>
+              </g>
+
+              <!-- Pipe 2: Ø30 (Medium) -->
+              <g transform="translate(96, 30) scale(0.78)">
+                <path d="M40,22 L122,22 A24,38 0 0,1 122,102 L40,102 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.8"/>
+                <path d="M40,78 L128,78 A24,38 0 0,1 122,102 L40,102 Z" fill="#000000"/>
+                <ellipse cx="40" cy="62" rx="26" ry="42" fill="#ffffff" stroke="#000000" stroke-width="2.8"/>
+                <ellipse cx="38" cy="62" rx="16" ry="26" fill="#000000"/>
+                <text x="88" y="66" text-anchor="middle" fill="#000000" font-size="19" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="4" paint-order="stroke">Ø30</text>
+              </g>
+
+              <!-- Pipe 3: Ø40 (Large) -->
+              <g transform="translate(184, 18) scale(0.9)">
+                <path d="M42,22 L126,22 A25,40 0 0,1 126,104 L42,104 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.6"/>
+                <path d="M42,80 L132,80 A25,40 0 0,1 126,104 L42,104 Z" fill="#000000"/>
+                <ellipse cx="42" cy="63" rx="27" ry="44" fill="#ffffff" stroke="#000000" stroke-width="2.6"/>
+                <ellipse cx="39" cy="63" rx="17" ry="28" fill="#000000"/>
+                <text x="92" y="67" text-anchor="middle" fill="#000000" font-size="18" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="4" paint-order="stroke">Ø40</text>
+              </g>
+
+              <!-- Pipe 4: Ø60 (Extra Large Hero Pipe) -->
+              <g transform="translate(268, 6) scale(1.04)">
+                <path d="M44,20 L132,20 A26,42 0 0,1 132,106 L44,106 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.5"/>
+                <path d="M44,24 L136,24 L136,40 L44,40 Z" fill="#ffffff" opacity="0.88"/>
+                <path d="M44,82 L138,82 A26,42 0 0,1 132,106 L44,106 Z" fill="#000000"/>
+                <ellipse cx="44" cy="63" rx="28" ry="46" fill="#ffffff" stroke="#000000" stroke-width="2.6"/>
+                <ellipse cx="41" cy="63" rx="24" ry="41" fill="#ffffff" stroke="#000000" stroke-width="2"/>
+                <ellipse cx="41" cy="63" rx="17" ry="29" fill="#000000"/>
+                <line x1="41" y1="36" x2="41" y2="90" stroke="#ffffff" stroke-width="1.8"/>
+                <text x="96" y="67" text-anchor="middle" fill="#000000" font-size="17" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">Ø60</text>
+              </g>
+            </svg>`;
+
+        case 'tank-group':
+          // Panoramic 1-Image Showcase of Precast Water Tanks (Ø80 & Ø100 Side-by-Side)
+          return `
+            <svg viewBox="0 0 280 135" class="w-full h-full cad-illustration">
+              ${defs}
+
+              <!-- Tank 1: Ø80 (Left) -->
+              <g transform="translate(10, 16) scale(0.84)">
+                <path d="M30,30 L30,96 A58,17 0 0,0 146,96 L146,30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.8"/>
+                <path d="M30,30 L30,96 A58,17 0 0,0 146,96 L146,30 Z" fill="url(#concreteDots)" opacity="0.5"/>
+                <path d="M96,47 L96,112 A58,17 0 0,0 146,96 L146,30 A58,17 0 0,1 96,47 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2"/>
+                <path d="M124,42 L124,107 A58,17 0 0,0 146,96 L146,30 A58,17 0 0,1 124,42 Z" fill="#000000"/>
+                <path d="M30,55 A58,17 0 0,0 146,55" fill="none" stroke="#000000" stroke-width="2.2"/>
+                <path d="M30,76 A58,17 0 0,0 146,76" fill="none" stroke="#000000" stroke-width="2.2"/>
+                <text x="68" y="73" text-anchor="middle" fill="#000000" font-size="16" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">Ø80</text>
+                <ellipse cx="88" cy="30" rx="60" ry="18" fill="#ffffff" stroke="#000000" stroke-width="2.8"/>
+                <ellipse cx="88" cy="30" rx="48" ry="13" fill="#000000"/>
+              </g>
+
+              <!-- Tank 2: Ø100 (Right, Larger) -->
+              <g transform="translate(118, 4) scale(0.98)">
+                <path d="M30,30 L30,98 A62,18 0 0,0 154,98 L154,30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.7"/>
+                <path d="M30,30 L30,98 A62,18 0 0,0 154,98 L154,30 Z" fill="url(#concreteDots)" opacity="0.5"/>
+                <path d="M100,48 L100,115 A62,18 0 0,0 154,98 L154,30 A62,18 0 0,1 100,48 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2"/>
+                <path d="M130,43 L130,110 A62,18 0 0,0 154,98 L154,30 A62,18 0 0,1 130,43 Z" fill="#000000"/>
+                <path d="M30,56 A62,18 0 0,0 154,56" fill="none" stroke="#000000" stroke-width="2.3"/>
+                <path d="M30,78 A62,18 0 0,0 154,78" fill="none" stroke="#000000" stroke-width="2.3"/>
+                <text x="72" y="74" text-anchor="middle" fill="#000000" font-size="16" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="3.5" paint-order="stroke">Ø100</text>
+                <ellipse cx="92" cy="30" rx="64" ry="19" fill="#ffffff" stroke="#000000" stroke-width="2.7"/>
+                <ellipse cx="92" cy="30" rx="52" ry="13.5" fill="#000000"/>
+                <path d="M48,32 A44,10 0 0,1 136,32" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="4,2"/>
+              </g>
+            </svg>`;
+
+        case 'pipe-20':
+        case 'pipe-30':
+        case 'pipe-40':
+        case 'pipe-60':
+          const pScale = type === 'pipe-20' ? 0.76 : type === 'pipe-30' ? 0.86 : type === 'pipe-40' ? 0.96 : 1.07;
+          const pNum = type.replace('pipe-', 'Ø');
+          return `
+            <svg viewBox="0 0 210 130" class="w-full h-full cad-illustration">
+              ${defs}
+              <g transform="translate(105, 65) scale(${pScale}) translate(-105, -65)">
+                <path d="M54,22 L160,22 A27,42 0 0,1 160,106 L54,106 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2.6"/>
+                <path d="M54,26 L165,26 L165,44 L54,44 Z" fill="#ffffff" opacity="0.9"/>
+                <text x="118" y="68" text-anchor="middle" fill="#000000" font-size="18" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="3" paint-order="stroke">${pNum}</text>
+                <path d="M54,82 L168,82 A27,42 0 0,1 160,106 L54,106 Z" fill="#000000"/>
+                <ellipse cx="54" cy="64" rx="29" ry="46" fill="#ffffff" stroke="#000000" stroke-width="2.8"/>
+                <ellipse cx="50" cy="64" rx="25" ry="41" fill="#ffffff" stroke="#000000" stroke-width="2.2"/>
+                <ellipse cx="50" cy="64" rx="17" ry="28" fill="#000000"/>
+                <path d="M46,38 A14,25 0 0,1 46,90" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="3,2"/>
+                <line x1="50" y1="37" x2="50" y2="91" stroke="#ffffff" stroke-width="2"/>
+                <polygon points="50,36 46,43 54,43" fill="#ffffff"/>
+                <polygon points="50,92 46,85 54,85" fill="#ffffff"/>
+              </g>
+            </svg>`;
+
+        case 'tank-80':
+        case 'tank-100':
+          const tScale = type === 'tank-80' ? 0.88 : 1.05;
+          const tNum = type === 'tank-80' ? 'Ø80' : 'Ø100';
+          return `
+            <svg viewBox="0 0 210 130" class="w-full h-full cad-illustration">
+              ${defs}
+              <g transform="translate(105, 66) scale(${tScale}) translate(-105, -66)">
+                <path d="M42,30 L42,95 A63,18 0 0,0 168,95 L168,30 Z" fill="#ffffff" stroke="#000000" stroke-width="2.7"/>
+                <path d="M42,30 L42,95 A63,18 0 0,0 168,95 L168,30 Z" fill="url(#concreteDots)" opacity="0.5"/>
+                <path d="M114,48 L114,112 A63,18 0 0,0 168,95 L168,30 A63,18 0 0,1 114,48 Z" fill="url(#hatchDense)" stroke="#000000" stroke-width="2"/>
+                <path d="M144,43 L144,107 A63,18 0 0,0 168,95 L168,30 A63,18 0 0,1 144,43 Z" fill="#000000"/>
+                <path d="M42,55 A63,18 0 0,0 168,55" fill="none" stroke="#000000" stroke-width="2.3"/>
+                <path d="M42,76 A63,18 0 0,0 168,76" fill="none" stroke="#000000" stroke-width="2.3"/>
+                <text x="82" y="72" text-anchor="middle" fill="#000000" font-size="16" font-weight="900" font-family="monospace" stroke="#ffffff" stroke-width="3" paint-order="stroke">${tNum}</text>
+                <ellipse cx="105" cy="30" rx="65" ry="19" fill="#ffffff" stroke="#000000" stroke-width="2.7"/>
+                <ellipse cx="105" cy="30" rx="53" ry="13.5" fill="#000000"/>
+                <path d="M60,32 A45,10 0 0,1 150,32" fill="none" stroke="#ffffff" stroke-width="1.4" stroke-dasharray="4,2"/>
+              </g>
+            </svg>`;
+
+        default:
+          return '';
+      }
+    }
+
+    // ============================================================================
+    // 4. PRODUCT IMAGE SHOWCASE SLOT RENDERER (WITH DRAG-TO-PAN, WHEEL-ZOOM & BADGES)
+    // ============================================================================
+    let dragPanState = null;
+
+    function renderSlotHtml(slotId, cadType, options = {}) {
+      const photo = state.uploadedPhotos[slotId];
+      const ui = uiLabels[state.lang];
+      const hintText = options.customHint || ui.clickUpload;
+      const topLeftBadge = options.topLeftBadge || '';
+      const topRightBadge = options.topRightBadge || '';
+
+      const badgesOverlayHtml = (topLeftBadge || topRightBadge) ? `
+        <div class="pointer-events-none absolute top-1.5 left-1.5 right-1.5 flex items-start justify-between gap-1 z-[5]">
+          ${topLeftBadge ? `<span class="bg-white/95 text-black border-[1.5px] border-black font-display font-black text-[9.5px] leading-none px-1.5 py-0.5 a5-badge">${topLeftBadge}</span>` : '<span></span>'}
+          ${topRightBadge ? `<span class="bw-tag-invert font-spec font-black text-[8.5px] leading-none px-1.5 py-0.5 a5-badge">${topRightBadge}</span>` : ''}
+        </div>
+      ` : '';
+
+      if (photo && photo.url) {
+        const fitClass = photo.fit === 'contain' ? 'object-contain' : 'object-cover';
+        const scaleVal = photo.scale || 1;
+        const panX = photo.x || 0;
+        const panY = photo.y || 0;
+        const zoomPct = Math.round(scaleVal * 100);
+        const filterMode = photo.filter || state.photoFilter;
+        const filterClass = filterMode === 'bw-crisp'
+          ? 'photo-filter-bw-crisp'
+          : 'photo-filter-color';
+
+        return `
+          <div class="w-full h-full bw-cad-grid flex items-center justify-center relative overflow-hidden">
+            ${badgesOverlayHtml}
+            <img
+              id="img-${slotId}"
+              src="${photo.url}"
+              alt="Product"
+              draggable="false"
+              onmousedown="startPhotoPan(event, '${slotId}')"
+              onwheel="wheelZoomPhoto(event, '${slotId}')"
+              class="w-full h-full ${fitClass} ${filterClass} cursor-grab active:cursor-grabbing"
+              style="transform: translate(${panX}px, ${panY}px) scale(${scaleVal}); transform-origin: center center;"
+            />
+            <div class="slot-toolbar no-print absolute bottom-1 left-1 right-1 flex items-center justify-between gap-1 bg-black/90 text-white rounded px-1.5 py-0.5 text-[9px] shadow-lg border border-white/40 z-10">
+              <span id="hud-${slotId}" class="font-spec text-[8.5px] text-zinc-300 truncate" title="Tỷ lệ thu phóng & Vị trí (X, Y)">
+                ${zoomPct}% (${panX},${panY})
+              </span>
+              <div class="flex items-center gap-0.5 shrink-0">
+                <button type="button" onclick="FileReplace(event, '${slotId}')" class="px-1 hover:text-zinc-300 font-bold" title="Đổi ảnh khác">📷</button>
+                <span class="text-zinc-600">|</span>
+                <button type="button" onclick="zoomPhoto(event, '${slotId}', 0.1)" class="px-1 hover:text-zinc-300 font-extrabold" title="Phóng to">+</button>
+                <button type="button" onclick="zoomPhoto(event, '${slotId}', -0.1)" class="px-1 hover:text-zinc-300 font-extrabold" title="Thu nhỏ">−</button>
+                <button type="button" onclick="resetPhotoTransform(event, '${slotId}')" class="px-1 hover:text-zinc-300 font-bold" title="Căn giữa & đặt lại thu phóng">🎯</button>
+                <span class="text-zinc-600">|</span>
+                <button type="button" onclick="togglePhotoFit(event, '${slotId}')" class="px-1 hover:text-zinc-300 font-bold" title="Vừa khung / Đầy khung">
+                  ${photo.fit === 'contain' ? 'Đầy' : 'Vừa'}
+                </button>
+                <span class="text-zinc-600">|</span>
+                <button type="button" onclick="cycleSlotFilter(event, '${slotId}')" class="px-1 hover:text-zinc-300 font-bold" title="Đen trắng / Màu">
+                  ${filterMode === 'color' ? 'Màu' : 'B&W'}
+                </button>
+                <span class="text-zinc-600">|</span>
+                <button type="button" onclick="removePhoto(event, '${slotId}')" class="px-1 text-white hover:text-zinc-400 font-black" title="Xóa ảnh">✕</button>
+              </div>
+            </div>
+          </div>
+        `;
+      }
+
+      return `
+        <div class="w-full h-full bw-cad-grid flex flex-col items-center justify-center p-1 relative">
+          ${badgesOverlayHtml}
+          ${getCadSvg(cadType)}
+          <span class="upload-pill no-print absolute bottom-1 right-1 inline-flex items-center gap-1 px-1.5 py-0.5 bg-black text-white text-[8px] font-extrabold border border-white shadow z-10">
+            <span>${hintText}</span>
+          </span>
+        </div>
+      `;
+    }
+
+    function renderFixedSlots() {
+      const fac = state.facilities[state.lang];
+
+      const logoSlot = document.getElementById('slot-logo');
+      if (logoSlot) {
+        const logoPhoto = state.uploadedPhotos['logo'];
+        if (logoPhoto && logoPhoto.url) {
+          logoSlot.innerHTML = renderSlotHtml('logo', '');
+        } else {
+          logoSlot.innerHTML = `
+            <svg class="w-5 h-5 text-black cad-illustration" fill="none" stroke="currentColor" stroke-width="2.3" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span class="text-[7px] font-black text-black tracking-wider uppercase mt-0.5 font-spec">LOGO</span>
+          `;
+        }
+      }
+
+      const qrLabels = [fac.fac1.qrLabel, fac.fac2.qrLabel];
+      ['qr-1', 'qr-2'].forEach((qrId, idx) => {
+        const qrEl = document.getElementById('slot-' + qrId);
+        if (!qrEl) return;
+        const qrPhoto = state.uploadedPhotos[qrId];
+        if (qrPhoto && qrPhoto.url) {
+          qrEl.innerHTML = renderSlotHtml(qrId, '');
+        } else {
+          qrEl.innerHTML = `
+            <svg class="w-4 h-4 text-black cad-illustration" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v1m6 11h2m-6 0h-2v4m0-11v3m0 0h.01M12 12h4.01M16 20h4M4 12h4m12 0h.01M5 8h2a1 1 0 001-1V5a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1zm12 0h2a1 1 0 001-1V5a1 1 0 00-1-1h-2a1 1 0 00-1 1v2a1 1 0 001 1zM5 20h2a1 1 0 001-1v-2a1 1 0 00-1-1H5a1 1 0 00-1 1v2a1 1 0 001 1z"/>
+            </svg>
+            <span class="text-[7px] font-black text-black font-spec leading-none mt-0.5">${qrLabels[idx]}</span>
+          `;
+        }
+      });
+    }
+
+    function handleSlotClick(e, slotId) {
+      if (state.uploadedPhotos[slotId] && state.uploadedPhotos[slotId].url) {
+        return;
+      }
+      triggerUpload(slotId);
+    }
+
+    function FileReplace(e, slotId) {
+      e.stopPropagation();
+      triggerUpload(slotId);
+    }
+
+    function triggerUpload(slotId) {
+      state.activeSlotId = slotId;
+      const input = document.getElementById('global-photo-input');
+      input.value = '';
+      input.click();
+    }
+
+    document.getElementById('global-photo-input').addEventListener('change', function (e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file || !state.activeSlotId) return;
+      readAndStorePhoto(file, state.activeSlotId);
+    });
+
+    function readAndStorePhoto(file, slotId) {
+      if (!file.type.startsWith('image/')) return;
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        state.uploadedPhotos[slotId] = {
+          url: evt.target.result,
+          fit: (slotId === 'logo' || slotId.startsWith('qr')) ? 'contain' : 'cover',
+          scale: 1,
+          x: 0,
+          y: 0,
+          filter: state.photoFilter
+        };
+        renderAll();
+        scheduleAutoSave();
+      };
+      reader.readAsDataURL(file);
+    }
+
+    // Batch upload multiple product images into visible product slots in order
+    function triggerBatchUpload() {
+      const input = document.getElementById('batch-photo-input');
+      input.value = '';
+      input.click();
+    }
+
+    document.getElementById('batch-photo-input').addEventListener('change', function (e) {
+      const files = Array.from(e.target.files || []).filter(f => f.type.startsWith('image/'));
+      if (!files.length) return;
+
+      const slotOrder = state.layout === 'catalog-24'
+        ? [
+            ...bricksData.map(i => 'cat24-' + i.id),
+            ...columnSeriesData.reduce((a, s) => a.concat(s.items.map(i => 'cat24-' + i.id)), []),
+            ...pipesData.map(i => 'cat24-' + i.id),
+            ...tanksData.map(i => 'cat24-' + i.id)
+          ]
+        : [
+            ...bricksData.map(i => 'brochure-' + i.id),
+            ...columnSeriesData.map(s => 'series-' + s.seriesId),
+            'showcase-pipes',
+            'showcase-tanks'
+          ];
+
+      const emptySlots = slotOrder.filter(id => !state.uploadedPhotos[id]);
+      const targetSlots = emptySlots.length >= files.length ? emptySlots : slotOrder;
+
+      let loaded = 0;
+      const toLoad = Math.min(files.length, targetSlots.length);
+      for (let i = 0; i < toLoad; i++) {
+        const reader = new FileReader();
+        const slotId = targetSlots[i];
+        reader.onload = function (evt) {
+          state.uploadedPhotos[slotId] = {
+            url: evt.target.result,
+            fit: 'cover',
+            scale: 1,
+            x: 0,
+            y: 0,
+            filter: state.photoFilter
+          };
+          loaded++;
+          if (loaded === toLoad) {
+            renderAll();
+            scheduleAutoSave();
+          }
+        };
+        reader.readAsDataURL(files[i]);
+      }
+    });
+
+    function updatePhotoHud(slotId) {
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      const hudEl = document.getElementById('hud-' + slotId);
+      if (hudEl) {
+        const zoomPct = Math.round((entry.scale || 1) * 100);
+        hudEl.innerText = `${zoomPct}% (${entry.x || 0},${entry.y || 0})`;
+      }
+    }
+
+    // Interactive Drag-to-Pan and Wheel-Zoom for Uploaded Photos
+    function startPhotoPan(e, slotId) {
+      if (e.button !== 0) return;
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      e.preventDefault();
+      e.stopPropagation();
+      dragPanState = {
+        slotId,
+        startX: e.clientX - (entry.x || 0),
+        startY: e.clientY - (entry.y || 0)
+      };
+    }
+
+    window.addEventListener('mousemove', function (e) {
+      if (!dragPanState) return;
+      const entry = state.uploadedPhotos[dragPanState.slotId];
+      if (!entry) return;
+      entry.x = Math.round(e.clientX - dragPanState.startX);
+      entry.y = Math.round(e.clientY - dragPanState.startY);
+      const imgEl = document.getElementById('img-' + dragPanState.slotId);
+      if (imgEl) {
+        imgEl.style.transform = `translate(${entry.x}px, ${entry.y}px) scale(${entry.scale || 1})`;
+      }
+      updatePhotoHud(dragPanState.slotId);
+    });
+
+    window.addEventListener('mouseup', function () {
+      if (dragPanState) {
+        dragPanState = null;
+        scheduleAutoSave();
+      }
+    });
+
+    function wheelZoomPhoto(e, slotId) {
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      e.preventDefault();
+      e.stopPropagation();
+      const delta = e.deltaY < 0 ? 0.06 : -0.06;
+      const next = Math.min(3.0, Math.max(0.4, (entry.scale || 1) + delta));
+      entry.scale = Number(next.toFixed(2));
+      const imgEl = document.getElementById('img-' + slotId);
+      if (imgEl) {
+        imgEl.style.transform = `translate(${entry.x || 0}px, ${entry.y || 0}px) scale(${entry.scale})`;
+      }
+      updatePhotoHud(slotId);
+      scheduleAutoSave();
+    }
+
+    function onSlotDragOver(e, el) {
+      e.preventDefault();
+      e.stopPropagation();
+      el.classList.add('drag-over');
+    }
+
+    function onSlotDragLeave(e, el) {
+      e.preventDefault();
+      e.stopPropagation();
+      el.classList.remove('drag-over');
+    }
+
+    function onSlotDrop(e, slotId, el) {
+      e.preventDefault();
+      e.stopPropagation();
+      el.classList.remove('drag-over');
+      const file = e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files[0];
+      if (file) readAndStorePhoto(file, slotId);
+    }
+
+    function zoomPhoto(e, slotId, delta) {
+      e.stopPropagation();
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      const next = Math.min(3.0, Math.max(0.4, (entry.scale || 1) + delta));
+      entry.scale = Number(next.toFixed(2));
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function resetPhotoTransform(e, slotId) {
+      e.stopPropagation();
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      const def = defaultUploadedPhotos[slotId];
+      if (def && entry.url === def.url) {
+        entry.scale = def.scale;
+        entry.x = def.x;
+        entry.y = def.y;
+        entry.fit = def.fit;
+      } else {
+        entry.scale = 1;
+        entry.x = 0;
+        entry.y = 0;
+      }
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function togglePhotoFit(e, slotId) {
+      e.stopPropagation();
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      entry.fit = entry.fit === 'cover' ? 'contain' : 'cover';
+      entry.scale = 1;
+      entry.x = 0;
+      entry.y = 0;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function cycleSlotFilter(e, slotId) {
+      e.stopPropagation();
+      const entry = state.uploadedPhotos[slotId];
+      if (!entry) return;
+      entry.filter = entry.filter === 'color' ? 'bw-crisp' : 'color';
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function removePhoto(e, slotId) {
+      e.stopPropagation();
+      delete state.uploadedPhotos[slotId];
+      deleteIdbPhoto(slotId);
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    // ============================================================================
+    // 5. INLINE TEXT PERSISTENCE & CUSTOM COLUMN METER/STEEL HELPERS
+    // ============================================================================
+    function saveHeaderFooter(key, value) {
+      state.headerFooter[state.lang][key] = value;
+      scheduleAutoSave();
+    }
+
+    function saveBenefitEdit(index, field, value) {
+      if (state.facilities[state.lang].benefits[index]) {
+        state.facilities[state.lang].benefits[index][field] = value;
+        scheduleAutoSave();
+      }
+    }
+
+    function saveFacilityEdit(facKey, field, value) {
+      if (state.facilities[state.lang][facKey]) {
+        state.facilities[state.lang][facKey][field] = value;
+        if (facKey === 'fac1') {
+          const f1Title = document.getElementById('edit-footer-f1-title');
+          const f1Addr = document.getElementById('edit-footer-f1-addr');
+          const f1Phone = document.getElementById('edit-footer-f1-phone');
+          if (field === 'name' && f1Title && document.activeElement !== f1Title) f1Title.innerText = value;
+          if (field === 'address' && f1Addr && document.activeElement !== f1Addr) f1Addr.innerText = value;
+          if (field === 'phone' && f1Phone && document.activeElement !== f1Phone) f1Phone.innerText = value;
+        } else if (facKey === 'fac2') {
+          const f2Title = document.getElementById('edit-footer-f2-title');
+          const f2Addr = document.getElementById('edit-footer-f2-addr');
+          const f2Phone = document.getElementById('edit-footer-f2-phone');
+          if (field === 'name' && f2Title && document.activeElement !== f2Title) f2Title.innerText = value;
+          if (field === 'address' && f2Addr && document.activeElement !== f2Addr) f2Addr.innerText = value;
+          if (field === 'phone' && f2Phone && document.activeElement !== f2Phone) f2Phone.innerText = value;
+        }
+        scheduleAutoSave();
+      }
+    }
+
+    function saveItemEdit(itemId, field, value) {
+      if (!state.productEdits[state.lang][itemId]) {
+        state.productEdits[state.lang][itemId] = {};
+      }
+      state.productEdits[state.lang][itemId][field] = value;
+      scheduleAutoSave();
+    }
+
+    function getItemField(item, field) {
+      const lang = state.lang;
+      const custom = state.productEdits[lang][item.id];
+      if (custom && custom[field] !== undefined) {
+        return custom[field];
+      }
+      return item[lang][field];
+    }
+
+    function saveSeriesCustomField(seriesIdx, field, value) {
+      if (columnSeriesData[seriesIdx]) {
+        columnSeriesData[seriesIdx][state.lang][field] = value;
+        scheduleAutoSave();
+      }
+    }
+
+    function addCustomColumnSpec(seriesIdx) {
+      const series = columnSeriesData[seriesIdx];
+      if (!series) return;
+      const newId = `${series.seriesId}-custom-${Date.now()}`;
+      const secNum = series.seriesId.replace('col-series-', '');
+      series.items.push({
+        id: newId,
+        cadType: series.cadType,
+        lenBadge: '...M',
+        isCustomAdded: true,
+        vn: {
+          name: `Cột ${secNum} - ...m (Sắt ...)`,
+          shortName: '...m',
+          tag: 'Sắt Ø...',
+          unit: 'Mét',
+          dim: `${series.sectionDim} • Dài ...m (Sắt ...)`
+        },
+        la: {
+          name: `ເສົາ ${secNum} - ...m (ເຫຼັກ ...)`,
+          shortName: '...m',
+          tag: 'ເຫຼັກ Ø...',
+          unit: 'ແມັດ',
+          dim: `${series.sectionDim} • ຍາວ ...m (ເຫຼັກ ...)`
+        }
+      });
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function removeCustomColumnSpec(e, seriesIdx, itemId) {
+      e.stopPropagation();
+      const series = columnSeriesData[seriesIdx];
+      if (!series) return;
+      series.items = series.items.filter(it => it.id !== itemId);
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function renderOrderCheckHtml(compact = false) {
+      const ui = uiLabels[state.lang];
+      if (compact) {
+        return `<span class="order-check-ui inline-block w-2.5 h-2.5 border-[1.5px] border-current bg-white shrink-0 mr-1 align-middle" title="Tick to order"></span>`;
+      }
+      return `
+        <div class="order-check-ui flex items-center justify-between gap-1 pt-1 mt-1 border-t border-dashed border-black text-[8.5px] font-spec font-bold text-black">
+          <span class="inline-flex items-center gap-1">
+            <span class="inline-block w-2.5 h-2.5 border-[1.5px] border-black bg-white"></span>
+            <span>Chọn</span>
+          </span>
+          <span>${ui.qtyLabel} ............</span>
+        </div>
+      `;
+    }
+
+    // ============================================================================
+    // 6. SLEEK RESPONSIVE "2 MANUFACTURING FACILITIES" BANNER
+    // ============================================================================
+    function buildDualFacilitySection() {
+      const lang = state.lang;
+      const fac = state.facilities[lang];
+      const ui = uiLabels[lang];
+
+      const benefitsBarHtml = `
+        <div class="grid grid-cols-1 sm:grid-cols-3 print:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x-2 print:divide-y-0 print:divide-x-2 divide-black bg-white">
+          ${fac.benefits.map((b, idx) => `
+            <div class="px-2 py-1 a5-pad flex items-center gap-1.5">
+              <span class="bw-tag-invert font-display font-black text-[8px] px-1.5 py-0.2 shrink-0 a5-badge">
+                ${b.num}
+              </span>
+              <div
+                contenteditable="true"
+                spellcheck="false"
+                oninput="saveBenefitEdit(${idx}, 'title', this.innerText)"
+                class="font-black text-[8.5px] text-black leading-tight uppercase truncate a5-card-title"
+              >${b.title}</div>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      const dualCardsHtml = state.facilityMode === 'full' ? `
+        <div class="grid grid-cols-1 sm:grid-cols-2 print:grid-cols-2 divide-y sm:divide-y-0 sm:divide-x-2 print:divide-y-0 print:divide-x-2 divide-black border-t-2 border-black bg-white">
+          ${['fac1', 'fac2'].map((key, idx) => {
+            const f = fac[key];
+            const slotId = idx === 0 ? 'facility-1-photo' : 'facility-2-photo';
+            const cadType = idx === 0 ? 'factory-1' : 'factory-2';
+            const hint = idx === 0 ? ui.fac1PhotoHint : ui.fac2PhotoHint;
+
+            return `
+              <div class="p-1.5 a5-pad grid grid-cols-12 gap-2 items-center a5-gap">
+                <div
+                  class="col-span-6 photo-slot h-[62px] a5-fac-img border-2 border-black bg-white"
+                  onclick="handleSlotClick(event, '${slotId}')"
+                  ondragover="onSlotDragOver(event, this)"
+                  ondragleave="onSlotDragLeave(event, this)"
+                  ondrop="onSlotDrop(event, '${slotId}', this)"
+                >
+                  ${renderSlotHtml(slotId, cadType, { customHint: hint, topLeftBadge: f.code })}
+                </div>
+                <div class="col-span-6 min-w-0">
+                  <h3
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveFacilityEdit('${key}', 'name', this.innerText)"
+                    class="font-black text-[9px] text-black truncate a5-card-title"
+                  >${f.name}</h3>
+                  <div
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveFacilityEdit('${key}', 'address', this.innerText)"
+                    class="text-[8px] font-semibold text-black truncate mt-0.5 a5-spec-text"
+                  >${f.address}</div>
+                </div>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      ` : '';
+
+      return `
+        <section class="bw-card-3d bg-white print-avoid-break">
+          ${benefitsBarHtml}
+          ${dualCardsHtml}
+        </section>
+      `;
+    }
+
+    // ============================================================================
+    // 7. RENDER MODE A: 1-PAGE RESPONSIVE VISUAL POSTER
+    //    - BIGGER IMAGES ACROSS ALL SECTIONS
+    //    - CỘT BÊ TÔNG WITH CUSTOM METER & STEEL
+    //    - 1 REPRESENTING IMAGE FOR ỐNG CỐNG LY TÂM & 1 FOR THENG NẬM / BỂ NƯỚC
+    // ============================================================================
+    function buildBrochureLayout() {
+      const lang = state.lang;
+      const ui = uiLabels[lang];
+
+      // ---- SECTION 01: 4 GIANT BRICK IMAGE CARDS ----
+      const bricksHtml = bricksData.map(item => `
+        <div class="bw-card-3d-sm bg-white flex flex-col justify-between relative overflow-hidden">
+          <div
+            class="photo-slot w-full brick-showcase-img border-b-[1.8px] border-black"
+            onclick="handleSlotClick(event, 'brochure-${item.id}')"
+            ondragover="onSlotDragOver(event, this)"
+            ondragleave="onSlotDragLeave(event, this)"
+            ondrop="onSlotDrop(event, 'brochure-${item.id}', this)"
+          >
+            ${renderSlotHtml('brochure-' + item.id, item.cadType, {
+              topLeftBadge: '#' + item.code,
+              topRightBadge: getItemField(item, 'ribbon')
+            })}
+          </div>
+
+          <div class="px-2 py-1.5 a5-pad flex items-center justify-between gap-1 bg-white">
+            <div class="flex items-center min-w-0">
+              ${renderOrderCheckHtml(true)}
+              <h3
+                contenteditable="true"
+                spellcheck="false"
+                oninput="saveItemEdit('${item.id}', 'name', this.innerText)"
+                class="font-display font-black text-[13.5px] text-black leading-none truncate a5-card-title"
+              >${getItemField(item, 'name')}</h3>
+            </div>
+            <span class="border border-black bg-white text-black text-[7.5px] font-extrabold px-1 py-0.2 shrink-0 font-spec a5-badge">
+              ${getItemField(item, 'unit')}
+            </span>
+          </div>
+
+          <div
+            contenteditable="true"
+            spellcheck="false"
+            oninput="saveItemEdit('${item.id}', 'dim', this.innerText)"
+            class="spec-dim-ui bw-dim-bar px-2 py-0.5 text-[8px] font-extrabold font-spec leading-tight truncate a5-spec-text"
+          >${getItemField(item, 'dim')}</div>
+        </div>
+      `).join('');
+
+      // ---- SECTION 02: PRECAST CONCRETE COLUMNS (LARGE IMAGE + EDITABLE METER/STEEL + CUSTOM METER & STEEL BOX) ----
+      const colSpans = [
+        'md:col-span-3 print:col-span-3',
+        'md:col-span-5 print:col-span-5',
+        'md:col-span-4 print:col-span-4'
+      ];
+      const pillGridCols = [
+        'grid-cols-1',
+        'grid-cols-2 sm:grid-cols-3 print:grid-cols-3',
+        'grid-cols-2 sm:grid-cols-3 print:grid-cols-3'
+      ];
+
+      const columnMatricesHtml = columnSeriesData.map((series, idx) => {
+        const sText = series[lang];
+        return `
+          <div class="${colSpans[idx]} bw-card-3d-sm bg-white flex flex-col justify-between overflow-hidden">
+            <div>
+              <!-- Series Banner Header + Add Spec Button -->
+              <div class="bw-series-head px-2 py-1 a5-pad flex items-center justify-between gap-1 border-b-[1.8px] border-black">
+                <span class="font-display font-black text-[11px] tracking-tight uppercase truncate a5-card-title">
+                  ■ ${sText.title}
+                </span>
+                <div class="flex items-center gap-1 shrink-0">
+                  <button
+                    type="button"
+                    onclick="addCustomColumnSpec(${idx})"
+                    class="no-print bg-zinc-800 hover:bg-zinc-700 text-white border border-white/50 text-[7.5px] font-bold px-1.5 py-0.2 rounded cursor-pointer"
+                    title="Thêm quy cách Mét & Sắt tùy chọn"
+                  >${ui.addColSpecBtn}</button>
+                  <span class="bg-white text-black border border-black text-[8px] font-black px-1.5 py-0.2 font-spec a5-badge">
+                    ${series.sectionDim}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Big Column Rebar Visual Showcase -->
+              <div
+                class="photo-slot w-full col-showcase-img border-b-[1.8px] border-black bg-white"
+                onclick="handleSlotClick(event, 'series-${series.seriesId}')"
+                ondragover="onSlotDragOver(event, this)"
+                ondragleave="onSlotDragLeave(event, this)"
+                ondrop="onSlotDrop(event, 'series-${series.seriesId}', this)"
+              >
+                ${renderSlotHtml('series-' + series.seriesId, series.cadType, {
+                  topRightBadge: series.sectionDim
+                })}
+              </div>
+
+              <!-- Editable Meter & Steel Spec Pills -->
+              <div class="p-1.5 a5-pad grid ${pillGridCols[idx]} gap-1 a5-gap bg-white">
+                ${series.items.map(item => {
+                  const tagText = getItemField(item, 'tag');
+                  return `
+                    <div class="bw-pill-3d px-1.5 py-1 a5-pad flex items-center justify-between gap-0.5 relative group">
+                      <div class="flex items-center min-w-0">
+                        ${renderOrderCheckHtml(true)}
+                        <span
+                          contenteditable="true"
+                          spellcheck="false"
+                          oninput="saveItemEdit('${item.id}', 'shortName', this.innerText)"
+                          class="font-spec font-black text-[9.5px] text-black leading-none a5-spec-text"
+                          title="Chỉnh sửa số Mét"
+                        >${getItemField(item, 'shortName')}</span>
+                      </div>
+                      <div class="flex items-center gap-0.5 shrink-0">
+                        <span
+                          contenteditable="true"
+                          spellcheck="false"
+                          oninput="saveItemEdit('${item.id}', 'tag', this.innerText)"
+                          class="bw-tag-invert font-spec text-[7px] font-extrabold px-1 py-0.2 leading-none a5-badge"
+                          title="Chỉnh sửa loại Sắt"
+                        >${tagText}</span>
+                        ${item.isCustomAdded ? `
+                          <button
+                            type="button"
+                            onclick="removeCustomColumnSpec(event, ${idx}, '${item.id}')"
+                            class="no-print text-[8px] font-black text-red-600 hover:text-black px-0.5"
+                            title="Xóa"
+                          >✕</button>
+                        ` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+
+            <!-- Custom Meter & Custom Steel Order Row (Tùy chọn Mét & Sắt) -->
+            <div class="px-1.5 pb-1.5 a5-pad bg-white">
+              <div class="bw-pill-custom px-2 py-1 a5-pad flex items-center justify-between gap-1 bg-zinc-50">
+                <div class="flex items-center min-w-0">
+                  ${renderOrderCheckHtml(true)}
+                  <span
+                    contenteditable="true"
+                    spellcheck="false"
+                    oninput="saveSeriesCustomField(${idx}, 'customMeter', this.innerText)"
+                    class="font-spec font-black text-[8.5px] text-black leading-none a5-spec-text"
+                  >${sText.customMeter}</span>
+                </div>
+                <span
+                  contenteditable="true"
+                  spellcheck="false"
+                  oninput="saveSeriesCustomField(${idx}, 'customSteel', this.innerText)"
+                  class="bw-tag-invert font-spec font-black text-[7.5px] px-1.5 py-0.2 leading-none shrink-0 a5-badge"
+                >${sText.customSteel}</span>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // ---- SECTION 03: ỐNG CỐNG LY TÂM (1 BIG REPRESENTING IMAGE + 4 SIZE PILLS) ----
+      const pipePillsHtml = pipesData.map(item => `
+        <div class="bw-pill-3d px-2 py-1.5 a5-pad flex items-center justify-between gap-1 bg-white">
+          <div class="flex items-center min-w-0">
+            ${renderOrderCheckHtml(true)}
+            <span
+              contenteditable="true"
+              spellcheck="false"
+              oninput="saveItemEdit('${item.id}', 'name', this.innerText)"
+              class="font-display font-black text-[11px] text-black leading-none truncate a5-card-title"
+            >${getItemField(item, 'name')}</span>
+          </div>
+          <span
+            contenteditable="true"
+            spellcheck="false"
+            oninput="saveItemEdit('${item.id}', 'badge', this.innerText)"
+            class="bw-tag-invert font-spec text-[8px] font-black px-1.5 py-0.5 leading-none shrink-0 a5-badge"
+          >${getItemField(item, 'badge')}</span>
+        </div>
+      `).join('');
+
+      // ---- SECTION 04: THENG NẬM / BỂ NƯỚC (1 BIG REPRESENTING IMAGE + 2 SIZE PILLS) ----
+      const tankPillsHtml = tanksData.map(item => `
+        <div class="bw-pill-3d px-2 py-1.5 a5-pad flex items-center justify-between gap-1 bg-white">
+          <div class="flex items-center min-w-0">
+            ${renderOrderCheckHtml(true)}
+            <span
+              contenteditable="true"
+              spellcheck="false"
+              oninput="saveItemEdit('${item.id}', 'name', this.innerText)"
+              class="font-display font-black text-[11px] text-black leading-none truncate a5-card-title"
+            >${getItemField(item, 'name')}</span>
+          </div>
+          <span
+            contenteditable="true"
+            spellcheck="false"
+            oninput="saveItemEdit('${item.id}', 'badge', this.innerText)"
+            class="bw-tag-invert font-spec text-[8px] font-black px-1.5 py-0.5 leading-none shrink-0 a5-badge"
+          >${getItemField(item, 'badge')}</span>
+        </div>
+      `).join('');
+
+      return `
+        <!-- SLEEK 2-FACILITY ADVANTAGE STRIP -->
+        ${buildDualFacilitySection()}
+
+        <!-- CATEGORY 01: UNBAKED BRICKS (4 GIANT IMAGE SHOWCASE CARDS) -->
+        <section class="bw-card-3d bg-white print-avoid-break">
+          <div class="bw-sec-ribbon px-2.5 py-1 a5-pad flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="bw-sec-index font-display font-black text-[9.5px] px-1.5 py-0.2 a5-badge">01</span>
+              <h2 class="font-display font-black text-xs uppercase tracking-tight a5-sec-title">${ui.sec1Title}</h2>
+            </div>
+            <span class="font-spec text-[8px] font-black bg-white text-black border border-black px-1.5 py-0.2 a5-badge">
+              ${ui.unitPrefix} ${bricksData[0][lang].unit}
+            </span>
+          </div>
+          <div class="p-2 a5-pad grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 print:grid-cols-4 gap-2.5 a5-gap bg-white">
+            ${bricksHtml}
+          </div>
+        </section>
+
+        <!-- CATEGORY 02: PRECAST CONCRETE COLUMNS (LARGE VISUALS + CUSTOM METER & STEEL) -->
+        <section class="bw-card-3d bg-white print-avoid-break">
+          <div class="bw-sec-ribbon px-2.5 py-1 a5-pad flex flex-wrap items-center justify-between gap-1">
+            <div class="flex items-center gap-2">
+              <span class="bw-sec-index font-display font-black text-[9.5px] px-1.5 py-0.2 a5-badge">02</span>
+              <h2 class="font-display font-black text-xs uppercase tracking-tight a5-sec-title">${ui.sec2Title}</h2>
+              <span class="bg-white text-black border border-black font-spec font-black text-[8px] px-1.5 py-0.2 a5-badge">
+                ${ui.sec2CustomBadge}
+              </span>
+            </div>
+            <span class="font-spec text-[8px] font-black bg-white text-black border border-black px-1.5 py-0.2 a5-badge">
+              ${ui.unitPrefix} ${columnSeriesData[0][lang].unit}
+            </span>
+          </div>
+
+          <div class="p-2 a5-pad grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-2.5 a5-gap bg-white">
+            ${columnMatricesHtml}
+          </div>
+        </section>
+
+        <!-- CATEGORY 03 & 04: 1 BIG REPRESENTING IMAGE FOR PIPES & 1 BIG REPRESENTING IMAGE FOR WATER TANKS -->
+        <div class="grid grid-cols-1 md:grid-cols-12 print:grid-cols-12 gap-2.5 a5-gap print-avoid-break">
+          
+          <!-- 03: CONCRETE PIPES (1 LARGE PANORAMIC REPRESENTING IMAGE + 4 SIZE PILLS) -->
+          <section class="md:col-span-7 print:col-span-7 bw-card-3d bg-white flex flex-col justify-between overflow-hidden">
+            <div class="bw-sec-ribbon px-2.5 py-1 a5-pad flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="bw-sec-index font-display font-black text-[9.5px] px-1.5 py-0.2 a5-badge">03</span>
+                <h2 class="font-display font-black text-xs uppercase tracking-tight a5-sec-title">${ui.sec3Title}</h2>
+              </div>
+              <span class="font-spec text-[8px] font-black bg-white text-black border border-black px-1.5 py-0.2 a5-badge">
+                ${ui.unitPrefix} ${pipesData[0][lang].unit}
+              </span>
+            </div>
+
+            <div class="p-2 a5-pad flex-1 flex flex-col justify-between gap-2 a5-gap bg-white">
+              <!-- Single Large Representing Image for All Centrifugal Concrete Pipes -->
+              <div
+                class="photo-slot w-full pipe-showcase-img bw-card-3d-sm bg-white"
+                onclick="handleSlotClick(event, 'showcase-pipes')"
+                ondragover="onSlotDragOver(event, this)"
+                ondragleave="onSlotDragLeave(event, this)"
+                ondrop="onSlotDrop(event, 'showcase-pipes', this)"
+              >
+                ${renderSlotHtml('showcase-pipes', 'pipe-group', {
+                  topLeftBadge: '#03',
+                  topRightBadge: 'Ø20 • Ø30 • Ø40 • Ø60'
+                })}
+              </div>
+
+              <!-- 4 Pipe Sizes Row -->
+              <div class="grid grid-cols-2 sm:grid-cols-4 print:grid-cols-4 gap-1.5 a5-gap">
+                ${pipePillsHtml}
+              </div>
+            </div>
+          </section>
+
+          <!-- 04: WATER TANKS / THENG NẬM (1 LARGE REPRESENTING IMAGE + 2 SIZE PILLS) -->
+          <section class="md:col-span-5 print:col-span-5 bw-card-3d bg-white flex flex-col justify-between overflow-hidden">
+            <div class="bw-sec-ribbon px-2.5 py-1 a5-pad flex items-center justify-between">
+              <div class="flex items-center gap-1.5">
+                <span class="bw-sec-index font-display font-black text-[9.5px] px-1.5 py-0.2 a5-badge">04</span>
+                <h2 class="font-display font-black text-xs uppercase tracking-tight truncate a5-sec-title">${ui.sec4Title}</h2>
+              </div>
+              <span class="font-spec text-[8px] font-black bg-white text-black border border-black px-1.5 py-0.2 shrink-0 a5-badge">
+                ${ui.unitPrefix} ${tanksData[0][lang].unit}
+              </span>
+            </div>
+
+            <div class="p-2 a5-pad flex-1 flex flex-col justify-between gap-2 a5-gap bg-white">
+              <!-- Single Large Representing Image for Water Tanks (Theng Nậm) -->
+              <div
+                class="photo-slot w-full tank-showcase-img bw-card-3d-sm bg-white"
+                onclick="handleSlotClick(event, 'showcase-tanks')"
+                ondragover="onSlotDragOver(event, this)"
+                ondragleave="onSlotDragLeave(event, this)"
+                ondrop="onSlotDrop(event, 'showcase-tanks', this)"
+              >
+                ${renderSlotHtml('showcase-tanks', 'tank-group', {
+                  topLeftBadge: '#04',
+                  topRightBadge: 'Ø80 • Ø100'
+                })}
+              </div>
+
+              <!-- 2 Tank Sizes Row -->
+              <div class="grid grid-cols-2 gap-1.5 a5-gap">
+                ${tankPillsHtml}
+              </div>
+            </div>
+          </section>
+
+        </div>
+      `;
+    }
+
+    // ============================================================================
+    // 8. RENDER MODE B: 24-ITEM LARGE PHOTO CATALOG GRID (RESPONSIVE)
+    // ============================================================================
+    function buildFull24CatalogLayout() {
+      const lang = state.lang;
+      const ui = uiLabels[lang];
+
+      const allColumns = columnSeriesData.reduce((acc, s) => acc.concat(s.items), []);
+
+      const sections = [
+        { code: '01', title: ui.sec1Title, unit: bricksData[0][lang].unit, items: bricksData },
+        { code: '02', title: `${ui.sec2Title} (${ui.sec2CustomBadge})`, unit: columnSeriesData[0][lang].unit, items: allColumns },
+        { code: '03', title: ui.sec3Title, unit: pipesData[0][lang].unit, items: pipesData },
+        { code: '04', title: ui.sec4Title, unit: tanksData[0][lang].unit, items: tanksData }
+      ];
+
+      const productGridHtml = sections.map(sec => `
+        <section class="bw-card-3d bg-white mb-3 last:mb-0">
+          <div class="bw-sec-ribbon px-3 py-1.5 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="bw-sec-index font-display font-black text-xs px-2 py-0.5">${sec.code}</span>
+              <h2 class="font-display font-black text-sm uppercase">${sec.title}</h2>
+            </div>
+            <span class="font-spec text-xs font-black bg-white text-black border border-black px-2 py-0.5">
+              ${ui.unitPrefix} ${sec.unit}
+            </span>
+          </div>
+
+          <div class="p-2.5 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 print:grid-cols-4 gap-3">
+            ${sec.items.map((item, idx) => {
+              const badgeRight = getItemField(item, 'tag') || item.lenBadge || getItemField(item, 'badge') || getItemField(item, 'ribbon') || getItemField(item, 'unit');
+              return `
+                <div class="bw-card-3d-sm bg-white flex flex-col justify-between print-avoid-break overflow-hidden">
+                  <div
+                    class="photo-slot w-full h-48 border-b-[1.8px] border-black"
+                    onclick="handleSlotClick(event, 'cat24-${item.id}')"
+                    ondragover="onSlotDragOver(event, this)"
+                    ondragleave="onSlotDragLeave(event, this)"
+                    ondrop="onSlotDrop(event, 'cat24-${item.id}', this)"
+                  >
+                    ${renderSlotHtml('cat24-' + item.id, item.cadType, {
+                      topLeftBadge: '#' + String(idx + 1).padStart(2, '0'),
+                      topRightBadge: badgeRight
+                    })}
+                  </div>
+                  <div class="p-2 flex-1 flex flex-col justify-between bg-white">
+                    <div class="flex items-center justify-between gap-1">
+                      <h3
+                        contenteditable="true"
+                        spellcheck="false"
+                        oninput="saveItemEdit('${item.id}', 'name', this.innerText)"
+                        class="font-display font-black text-xs text-black leading-snug truncate"
+                      >${getItemField(item, 'name')}</h3>
+                    </div>
+                    <div
+                      contenteditable="true"
+                      spellcheck="false"
+                      oninput="saveItemEdit('${item.id}', 'dim', this.innerText)"
+                      class="spec-dim-ui mt-1 pt-1 border-t border-black text-[9px] font-bold text-black font-spec leading-tight truncate"
+                    >${getItemField(item, 'dim')}</div>
+                    ${renderOrderCheckHtml(false)}
+                  </div>
+                </div>
+              `;
+            }).join('')}
+          </div>
+        </section>
+      `).join('');
+
+      return `
+        <div class="mb-3">
+          ${buildDualFacilitySection()}
+        </div>
+        ${productGridHtml}
+      `;
+    }
+
+    // ============================================================================
+    // 9. MASTER RENDER & STUDIO CONTROLS
+    // ============================================================================
+    function renderAll() {
+      const lang = state.lang;
+      const ui = uiLabels[lang];
+      const hf = state.headerFooter[lang];
+      const fac = state.facilities[lang];
+
+      document.body.classList.toggle('lang-vn', lang === 'vn');
+      document.body.classList.toggle('lang-la', lang === 'la');
+      document.documentElement.lang = lang === 'vn' ? 'vi' : 'lo';
+
+      document.body.setAttribute('data-bw-mode', state.bwMode);
+
+      const sheet = document.getElementById('printable-sheet');
+      sheet.className = [
+        'paper-sheet',
+        `layout-${state.layout}`,
+        state.blankFrames ? 'blank-frames-mode' : '',
+        !state.showOrderChecks ? 'hide-order-checks' : '',
+        !state.showSpecDims ? 'hide-spec-dims' : ''
+      ].filter(Boolean).join(' ');
+
+      document.getElementById('edit-header-kicker').innerText = hf.kicker;
+      document.getElementById('edit-header-iso').innerText = hf.iso;
+      document.getElementById('edit-header-title').innerText = hf.title;
+      document.getElementById('edit-header-subtitle').innerText = hf.subtitle;
+      document.getElementById('edit-dual-badge-title').innerText = hf.dualBadgeTitle;
+      document.getElementById('edit-dual-badge-desc').innerText = hf.dualBadgeDesc;
+
+      document.getElementById('edit-footer-hotline-label').innerText = hf.hotlineLabel;
+      document.getElementById('edit-footer-phone').innerText = hf.phone;
+      document.getElementById('edit-footer-note').innerText = hf.footerNote;
+
+      document.getElementById('edit-footer-f1-title').innerText = fac.fac1.name;
+      document.getElementById('edit-footer-f1-phone').innerText = fac.fac1.phone;
+      document.getElementById('edit-footer-f1-addr').innerText = fac.fac1.address;
+
+      document.getElementById('edit-footer-f2-title').innerText = fac.fac2.name;
+      document.getElementById('edit-footer-f2-phone').innerText = fac.fac2.phone;
+      document.getElementById('edit-footer-f2-addr').innerText = fac.fac2.address;
+
+      renderFixedSlots();
+
+      const container = document.getElementById('catalog-main-container');
+      container.innerHTML = state.layout === 'catalog-24'
+        ? buildFull24CatalogLayout()
+        : buildBrochureLayout();
+
+      document.getElementById('ui-studio-sub').innerText = ui.studioSub;
+      document.getElementById('ui-bw-editorial').innerText = ui.bwEditorial;
+      document.getElementById('ui-bw-inksaver').innerText = ui.bwInksaver;
+      document.getElementById('ui-bw-blueprint').innerText = ui.bwBlueprint;
+      document.getElementById('ui-filter-crisp').innerText = ui.filterCrisp;
+      document.getElementById('ui-filter-color').innerText = ui.filterColor;
+      document.getElementById('ui-batch-btn').innerText = ui.batchBtn;
+      document.getElementById('ui-dims-toggle').innerText = state.showSpecDims ? ui.dimsOn : ui.dimsOff;
+      document.getElementById('ui-checks-toggle').innerText = state.showOrderChecks ? ui.checksOn : ui.checksOff;
+      document.getElementById('ui-cad-toggle').innerText = state.blankFrames ? ui.cadOff : ui.cadOn;
+      document.getElementById('ui-fac-toggle-label').innerText = state.facilityMode === 'full' ? ui.facShowImg : ui.facCompactOnly;
+      document.getElementById('ui-print-btn').innerText = ui.printBtn;
+      document.getElementById('ui-helper-1').innerText = ui.helper1;
+      document.getElementById('ui-save-now-btn').innerText = ui.saveNowBtn;
+      document.getElementById('ui-export-btn').innerText = ui.exportBtn;
+      document.getElementById('ui-import-btn').innerText = ui.importBtn;
+      document.getElementById('ui-reset-btn').innerText = ui.resetBtn;
+      const statusTextEl = document.getElementById('ui-save-status-text');
+      if (statusTextEl && !saveTimeoutId) {
+        statusTextEl.innerText = ui.saveStatusSaved;
+      }
+      syncControlButtonsUI();
+    }
+
+    function syncControlButtonsUI() {
+      // Language buttons
+      const btnVn = document.getElementById('btn-lang-vn');
+      const btnLa = document.getElementById('btn-lang-la');
+      if (btnVn && btnLa) {
+        if (state.lang === 'vn') {
+          btnVn.className = 'px-2 py-1 rounded text-xs font-extrabold transition-all bg-white text-black shadow';
+          btnLa.className = 'px-2 py-1 rounded text-xs font-extrabold transition-all text-zinc-300 hover:text-white';
+        } else {
+          btnLa.className = 'px-2 py-1 rounded text-xs font-extrabold transition-all bg-white text-black shadow';
+          btnVn.className = 'px-2 py-1 rounded text-xs font-extrabold transition-all text-zinc-300 hover:text-white';
+        }
+      }
+
+      // Layout buttons & @page CSS
+      const pageStyle = document.getElementById('dynamic-page-style');
+      if (pageStyle) {
+        pageStyle.innerHTML = state.layout === 'flyer-a5'
+          ? '@page { size: A5 portrait; margin: 0mm; }'
+          : '@page { size: A4 portrait; margin: 0mm; }';
+      }
+      ['brochure-a4', 'flyer-a5', 'catalog-24'].forEach(m => {
+        const btn = document.getElementById('btn-layout-' + m);
+        if (!btn) return;
+        btn.className = m === state.layout
+          ? 'px-2 py-1 rounded text-xs font-bold transition-all bg-white text-black shadow'
+          : 'px-2 py-1 rounded text-xs font-bold transition-all text-zinc-300 hover:text-white';
+      });
+
+      // B&W Mode buttons
+      ['editorial', 'blueprint', 'inksaver'].forEach(m => {
+        const btn = document.getElementById('btn-bw-' + m);
+        if (!btn) return;
+        btn.className = m === state.bwMode
+          ? 'px-2 py-1 rounded text-[11px] font-bold transition-all bg-white text-black shadow'
+          : 'px-2 py-1 rounded text-[11px] font-bold transition-all text-zinc-300 hover:text-white';
+      });
+
+      // Photo Filter buttons
+      const btnCrisp = document.getElementById('btn-filter-bw-crisp');
+      const btnColor = document.getElementById('btn-filter-color');
+      if (btnCrisp && btnColor) {
+        if (state.photoFilter === 'bw-crisp') {
+          btnCrisp.className = 'px-2 py-1 rounded text-[11px] font-bold transition-all bg-white text-black shadow';
+          btnColor.className = 'px-2 py-1 rounded text-[11px] font-bold transition-all text-zinc-300 hover:text-white';
+        } else {
+          btnColor.className = 'px-2 py-1 rounded text-[11px] font-bold transition-all bg-white text-black shadow';
+          btnCrisp.className = 'px-2 py-1 rounded text-[11px] font-bold transition-all text-zinc-300 hover:text-white';
+        }
+      }
+    }
+
+    function setLanguage(lang) {
+      state.lang = lang;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function setLayout(layoutMode) {
+      state.layout = layoutMode;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function setBwMode(mode) {
+      state.bwMode = mode;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function setPhotoFilter(filterType) {
+      state.photoFilter = filterType;
+      Object.keys(state.uploadedPhotos).forEach(k => {
+        state.uploadedPhotos[k].filter = filterType;
+      });
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function setFacilityMode(mode) {
+      state.facilityMode = mode;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function toggleSpecDims() {
+      state.showSpecDims = !state.showSpecDims;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function toggleOrderChecks() {
+      state.showOrderChecks = !state.showOrderChecks;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    function toggleBlankFrames() {
+      state.blankFrames = !state.blankFrames;
+      renderAll();
+      scheduleAutoSave();
+    }
+
+    // ============================================================================
+    // 10. PERSISTENCE ENGINE (LOCALSTORAGE + INDEXEDDB + JSON EXPORT/IMPORT)
+    //     Saves all settings, image positions (x, y), zoom (scale), fit & text edits
+    // ============================================================================
+    const STORAGE_KEY = 'sabaidee_flyer_saved_state_v1';
+    const IDB_NAME = 'SabaideeFlyerPhotoDB';
+    const IDB_STORE = 'uploaded_images';
+    let saveTimeoutId = null;
+
+    function openPhotoDb() {
+      return new Promise((resolve, reject) => {
+        if (!window.indexedDB) {
+          resolve(null);
+          return;
+        }
+        const req = indexedDB.open(IDB_NAME, 1);
+        req.onupgradeneeded = function (e) {
+          const db = e.target.result;
+          if (!db.objectStoreNames.contains(IDB_STORE)) {
+            db.createObjectStore(IDB_STORE);
+          }
+        };
+        req.onsuccess = function (e) {
+          resolve(e.target.result);
+        };
+        req.onerror = function () {
+          resolve(null);
+        };
+      });
+    }
+
+    async function saveIdbPhotos(photosMap) {
+      const db = await openPhotoDb();
+      if (!db) return;
+      return new Promise((resolve) => {
+        const tx = db.transaction(IDB_STORE, 'readwrite');
+        const store = tx.objectStore(IDB_STORE);
+        Object.keys(photosMap).forEach(slotId => {
+          const entry = photosMap[slotId];
+          if (entry && entry.url && entry.url.startsWith('data:')) {
+            store.put(entry.url, slotId);
+          }
+        });
+        tx.oncomplete = () => resolve();
+        tx.onerror = () => resolve();
+      });
+    }
+
+    async function deleteIdbPhoto(slotId) {
+      const db = await openPhotoDb();
+      if (!db) return;
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).delete(slotId);
+    }
+
+    async function clearAllIdbPhotos() {
+      const db = await openPhotoDb();
+      if (!db) return;
+      const tx = db.transaction(IDB_STORE, 'readwrite');
+      tx.objectStore(IDB_STORE).clear();
+    }
+
+    async function loadAllIdbPhotos() {
+      const db = await openPhotoDb();
+      if (!db) return {};
+      return new Promise((resolve) => {
+        const tx = db.transaction(IDB_STORE, 'readonly');
+        const store = tx.objectStore(IDB_STORE);
+        const result = {};
+        const cursorReq = store.openCursor();
+        cursorReq.onsuccess = function (e) {
+          const cursor = e.target.result;
+          if (cursor) {
+            result[cursor.key] = cursor.value;
+            cursor.continue();
+          } else {
+            resolve(result);
+          }
+        };
+        cursorReq.onerror = () => resolve({});
+      });
+    }
+
+    function setSaveBadgeStatus(isSaving, customLabel) {
+      const badge = document.getElementById('ui-save-status');
+      const textEl = document.getElementById('ui-save-status-text');
+      const ui = uiLabels[state.lang];
+      if (!badge || !textEl) return;
+
+      if (isSaving) {
+        badge.className = 'inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-950/90 text-amber-300 border border-amber-700/60 font-spec text-[10.5px] font-bold';
+        textEl.innerText = customLabel || ui.saveStatusSaving;
+      } else {
+        badge.className = 'inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-emerald-950/90 text-emerald-300 border border-emerald-700/60 font-spec text-[10.5px] font-bold';
+        textEl.innerText = customLabel || ui.saveStatusSaved;
+      }
+    }
+
+    function buildSerializablePayload(includeBase64Urls = false) {
+      const photoMeta = {};
+      Object.keys(state.uploadedPhotos).forEach(slotId => {
+        const p = state.uploadedPhotos[slotId];
+        if (!p) return;
+        const isDataUrl = p.url && p.url.startsWith('data:');
+        photoMeta[slotId] = {
+          url: (isDataUrl && !includeBase64Urls) ? '__IDB__' : p.url,
+          fit: p.fit || 'cover',
+          scale: typeof p.scale === 'number' ? p.scale : 1,
+          x: typeof p.x === 'number' ? p.x : 0,
+          y: typeof p.y === 'number' ? p.y : 0,
+          filter: p.filter || state.photoFilter
+        };
+      });
+
+      return {
+        version: 1,
+        savedAt: new Date().toISOString(),
+        settings: {
+          lang: state.lang,
+          layout: state.layout,
+          bwMode: state.bwMode,
+          photoFilter: state.photoFilter,
+          facilityMode: state.facilityMode,
+          showOrderChecks: state.showOrderChecks,
+          showSpecDims: state.showSpecDims,
+          blankFrames: state.blankFrames
+        },
+        headerFooter: state.headerFooter,
+        facilities: state.facilities,
+        productEdits: state.productEdits,
+        columnSeriesData: columnSeriesData,
+        uploadedPhotos: photoMeta
+      };
+    }
+
+    async function persistStateToStorage(customFeedbackLabel) {
+      try {
+        const payload = buildSerializablePayload(false);
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(payload));
+        await saveIdbPhotos(state.uploadedPhotos);
+        setSaveBadgeStatus(false, customFeedbackLabel);
+      } catch (err) {
+        console.warn('Auto-save warning:', err);
+      }
+    }
+
+    function scheduleAutoSave() {
+      setSaveBadgeStatus(true);
+      if (saveTimeoutId) clearTimeout(saveTimeoutId);
+      saveTimeoutId = setTimeout(() => {
+        saveTimeoutId = null;
+        persistStateToStorage();
+      }, 220);
+    }
+
+    function manualSaveNow() {
+      if (saveTimeoutId) {
+        clearTimeout(saveTimeoutId);
+        saveTimeoutId = null;
+      }
+      const msg = state.lang === 'vn' ? 'Đã lưu cài đặt & vị trí ảnh!' : 'ບັນທຶກສຳເລັດແລ້ວ!';
+      persistStateToStorage(msg);
+    }
+
+    async function applyLoadedPayload(parsed, idbPhotos = {}) {
+      if (!parsed || typeof parsed !== 'object') return;
+
+      if (parsed.settings) {
+        const s = parsed.settings;
+        if (s.lang) state.lang = s.lang;
+        if (s.layout) state.layout = s.layout;
+        if (s.bwMode) state.bwMode = s.bwMode;
+        if (s.photoFilter) state.photoFilter = s.photoFilter;
+        if (s.facilityMode) state.facilityMode = s.facilityMode;
+        if (typeof s.showOrderChecks === 'boolean') state.showOrderChecks = s.showOrderChecks;
+        if (typeof s.showSpecDims === 'boolean') state.showSpecDims = s.showSpecDims;
+        if (typeof s.blankFrames === 'boolean') state.blankFrames = s.blankFrames;
+      }
+
+      if (parsed.headerFooter) state.headerFooter = parsed.headerFooter;
+      if (parsed.facilities) state.facilities = parsed.facilities;
+      if (parsed.productEdits) state.productEdits = parsed.productEdits;
+      if (Array.isArray(parsed.columnSeriesData) && parsed.columnSeriesData.length) {
+        columnSeriesData = parsed.columnSeriesData;
+      }
+
+      if (parsed.uploadedPhotos && typeof parsed.uploadedPhotos === 'object') {
+        const restoredPhotos = JSON.parse(JSON.stringify(defaultUploadedPhotos));
+        Object.keys(parsed.uploadedPhotos).forEach(slotId => {
+          const item = parsed.uploadedPhotos[slotId];
+          if (!item) return;
+          const resolvedUrl = item.url === '__IDB__' ? idbPhotos[slotId] : item.url;
+          if (resolvedUrl) {
+            restoredPhotos[slotId] = {
+              url: resolvedUrl,
+              fit: item.fit || 'cover',
+              scale: typeof item.scale === 'number' ? item.scale : 1,
+              x: typeof item.x === 'number' ? item.x : 0,
+              y: typeof item.y === 'number' ? item.y : 0,
+              filter: item.filter || state.photoFilter
+            };
+          }
+        });
+        state.uploadedPhotos = restoredPhotos;
+      }
+    }
+
+    async function loadPersistedState() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) return;
+        const parsed = JSON.parse(raw);
+        const idbPhotos = await loadAllIdbPhotos();
+        await applyLoadedPayload(parsed, idbPhotos);
+      } catch (err) {
+        console.warn('Could not load saved state:', err);
+      }
+    }
+
+    function exportConfigJson() {
+      const fullPayload = buildSerializablePayload(true);
+      const blob = new Blob([JSON.stringify(fullPayload, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      const dateStr = new Date().toISOString().slice(0, 10);
+      a.href = url;
+      a.download = `sabaidee_catalog_settings_${dateStr}.json`;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
+    }
+
+    function triggerImportConfigJson() {
+      const input = document.getElementById('config-json-input');
+      if (!input) return;
+      input.value = '';
+      input.click();
+    }
+
+    document.getElementById('config-json-input').addEventListener('change', function (e) {
+      const file = e.target.files && e.target.files[0];
+      if (!file) return;
+      const reader = new FileReader();
+      reader.onload = async function (evt) {
+        try {
+          const parsed = JSON.parse(evt.target.result);
+          await applyLoadedPayload(parsed, {});
+          renderAll();
+          await persistStateToStorage(state.lang === 'vn' ? 'Đã nạp file cấu hình!' : 'ນຳເຂົ້າໄຟລ໌ສຳເລັດ!');
+        } catch (err) {
+          alert('File cấu hình (.json) không hợp lệ.');
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    async function resetCatalogData() {
+      localStorage.removeItem(STORAGE_KEY);
+      await clearAllIdbPhotos();
+      state.productEdits = { vn: {}, la: {} };
+      state.uploadedPhotos = JSON.parse(JSON.stringify(defaultUploadedPhotos));
+      columnSeriesData = JSON.parse(JSON.stringify(defaultColumnSeriesData));
+      renderAll();
+      setSaveBadgeStatus(false, state.lang === 'vn' ? 'Đã khôi phục mặc định' : 'ຄືນຄ່າເລີ່ມຕົ້ນແລ້ວ');
+    }
+
+    window.onload = async function () {
+      await loadPersistedState();
+      renderAll();
+    };
+  </script>
+</body>
+</html>
