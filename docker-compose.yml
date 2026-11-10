@@ -1,0 +1,19 @@
+services:
+  sabaidee-web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: sabaidee-landing-page:latest
+    container_name: sabaidee-landing-page
+    restart: unless-stopped
+    ports:
+      - "7979:7979"
+    environment:
+      - PORT=7979
+      - TZ=Asia/Vientiane
+    healthcheck:
+      test: ["CMD", "wget", "-q", "--spider", "http://localhost:7979/"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
