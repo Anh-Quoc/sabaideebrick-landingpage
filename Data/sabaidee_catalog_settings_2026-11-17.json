@@ -1,0 +1,763 @@
+{
+  "version": 1,
+  "savedAt": "2026-11-17T12:51:03.961Z",
+  "settings": {
+    "lang": "vn",
+    "layout": "brochure-a4",
+    "bwMode": "inksaver",
+    "photoFilter": "bw-crisp",
+    "facilityMode": "full",
+    "showOrderChecks": false,
+    "blankFrames": false
+  },
+  "headerFooter": {
+    "vn": {
+      "kicker": "XƯỞNG GẠCH KHÔNG NUNG MÁC CAO",
+      "iso": "CHUẨN KỸ THUẬT",
+      "title": "GẠCH KHÔNG NUNG • CỘT BÊ TÔNG • ỐNG CỐNG • BỂ NƯỚC",
+      "subtitle": "Nhận đặt cột bê tông chiều dài (Mét) & cốt sắt theo yêu cầu — Giao tận nơi",
+      "dualBadgeTitle": "HỆ THỐNG 2 XƯỞNG LỚN",
+      "dualBadgeDesc": "Giao nhanh từ xưởng gần nhất",
+      "hotlineLabel": "HOTLINE / WHATSAPP",
+      "phone": "020 9999 8888 • 020 5555 6666",
+      "footerNote": "🚚 Xe cẩu giao tận nơi • Tích [✓] chọn sản phẩm"
+    },
+    "la": {
+      "kicker": "ໂຮງງານຜະລິດໂດຍກົງ",
+      "iso": "ມາດຕະຖານສູງ",
+      "title": "ດິນບັອກ • ເສົາເບຕົງ • ທໍ່ລະບາຍນ້ຳ • ຖັງນ້ຳສຳເລັດຮູບ",
+      "subtitle": "ຜະລິດໂດຍກົງຈາກ 2 ໂຮງງານ — ຮັບສັ່ງເສົາເບຕົງຕາມຄວາມຍາວ (ແມັດ) ແລະ ຂະໜາດເຫຼັກ — ຈັດສົ່ງເຖິງໜ້າວຽກ",
+      "dualBadgeTitle": "ລະບົບ 2 ໂຮງງານຜະລິດ",
+      "dualBadgeDesc": "ຈັດສົ່ງໄວຈາກສາຂາໃກ້ສຸດ",
+      "hotlineLabel": "ສາຍດ່ວນ / WHATSAPP",
+      "phone": "020 9999 8888 • 020 5555 6666",
+      "footerNote": "🚚 ຈັດສົ່ງເຖິງໜ້າວຽກ • ໝາຍ [✓] ລາຍການທີ່ຕ້ອງການ"
+    }
+  },
+  "facilities": {
+    "vn": {
+      "sectionBadge": "2 NHÀ MÁY",
+      "sectionTitle": "NĂNG LỰC CUNG ỨNG NHANH TỪ 2 CƠ SỞ SẢN XUẤT",
+      "benefits": [
+        {
+          "id": "ben-1",
+          "num": "01",
+          "title": "SẢN LƯỢNG LUÔN LUÔN SẴN HÀNG"
+        },
+        {
+          "id": "ben-2",
+          "num": "02",
+          "title": "GIAO NHANH TỪ XƯỞNG GẦN NHẤT"
+        },
+        {
+          "id": "ben-3",
+          "num": "03",
+          "title": "NHẬN SẢN XUẤT THEO YÊU CẦU"
+        }
+      ],
+      "fac1": {
+        "code": "CS-01",
+        "name": "CƠ SỞ 01 ",
+        "address": "Đ/c: Bản Nonsart, Huyện ...................., Tỉnh ....................",
+        "phone": "020 95 906 875",
+        "qrLabel": "QR CS1",
+        "phone2": "020 96 863 332"
+      },
+      "fac2": {
+        "code": "CS-02",
+        "name": "CƠ SỞ 02",
+        "address": "Đ/c: Bản Nalom, Huyện Xaythany - Vientine",
+        "phone": "020 98 098 138",
+        "qrLabel": "QR CS2"
+      }
+    },
+    "la": {
+      "sectionBadge": "2 ໂຮງງານ",
+      "sectionTitle": "ກຳລັງການຜະລິດສູງ ຈາກລະບົບ 2 ໂຮງງານມາດຕະຖານ",
+      "benefits": [
+        {
+          "id": "ben-1",
+          "num": "01",
+          "title": "ກຳລັງຜະລິດ X2 – ສິນຄ້າພ້ອມສົ່ງ"
+        },
+        {
+          "id": "ben-2",
+          "num": "02",
+          "title": "ຈັດສົ່ງໄວ ຈາກສາຂາທີ່ໃກ້ທີ່ສຸດ"
+        },
+        {
+          "id": "ben-3",
+          "num": "03",
+          "title": "ຮັບສັ່ງຄວາມຍາວ (ແມັດ) & ເຫຼັກຕາມສັ່ງ"
+        }
+      ],
+      "fac1": {
+        "code": "CS-01",
+        "name": "ໂຮງງານ 01 (ສາຂາຫຼັກ)",
+        "address": "ບ້ານ ...................., ເມືອງ ...................., ແຂວງ ....................",
+        "phone": "020 9999 8888",
+        "qrLabel": "QR 1"
+      },
+      "fac2": {
+        "code": "CS-02",
+        "name": "ໂຮງງານ 02 (ສາຂາຂະຫຍາຍ)",
+        "address": "ບ້ານ ...................., ເມືອງ ...................., ແຂວງ ....................",
+        "phone": "020 5555 6666",
+        "qrLabel": "QR 2"
+      }
+    }
+  },
+  "productEdits": {
+    "vn": {
+      "col-10-2m": {
+        "tag": "Sắt choi"
+      },
+      "col-10-2.5m": {
+        "tag": "Sắt choi"
+      },
+      "col-series-10-custom-1794556860969": {
+        "shortName": "2.0m",
+        "tag": "Sắt kang"
+      },
+      "col-series-10-custom-1794556872796": {
+        "shortName": "2.5m",
+        "tag": "Sắt kang"
+      },
+      "pipe-20": {
+        "name": "Cống 20"
+      }
+    },
+    "la": {}
+  },
+  "columnSeriesData": [
+    {
+      "seriesId": "col-series-10",
+      "cadType": "col-10",
+      "sectionDim": "10×10 CM",
+      "vn": {
+        "title": "CỘT 10",
+        "unit": "Mét",
+        "customMeter": "Dài: ......m",
+        "customSteel": "Sắt: Ø......"
+      },
+      "la": {
+        "title": "ເສົາ 10",
+        "unit": "ແມັດ",
+        "customMeter": "ຍາວ: ......m",
+        "customSteel": "ເຫຼັກ: Ø......"
+      },
+      "items": [
+        {
+          "id": "col-10-2m",
+          "cadType": "col-10",
+          "lenBadge": "2.0M",
+          "vn": {
+            "name": "Cột 10 - 2m",
+            "shortName": "2.0m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "10×10cm • 2.0m"
+          },
+          "la": {
+            "name": "ເສົາ 10 - 2m",
+            "shortName": "2.0m",
+            "tag": "ເຫຼັກມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "10×10cm • 2.0m"
+          }
+        },
+        {
+          "id": "col-10-2.5m",
+          "cadType": "col-10",
+          "lenBadge": "2.5M",
+          "vn": {
+            "name": "Cột 10 - 2.5m",
+            "shortName": "2.5m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "10×10cm • 2.5m"
+          },
+          "la": {
+            "name": "ເສົາ 10 - 2.5m",
+            "shortName": "2.5m",
+            "tag": "ເຫຼັກມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "10×10cm • 2.5m"
+          }
+        },
+        {
+          "id": "col-series-10-custom-1794556860969",
+          "cadType": "col-10",
+          "lenBadge": "...M",
+          "isCustomAdded": true,
+          "vn": {
+            "name": "Cột 10 - ...m (Sắt ...)",
+            "shortName": "...m",
+            "tag": "Sắt Ø...",
+            "unit": "Mét",
+            "dim": "10×10 CM • Dài ...m (Sắt ...)"
+          },
+          "la": {
+            "name": "ເສົາ 10 - ...m (ເຫຼັກ ...)",
+            "shortName": "...m",
+            "tag": "ເຫຼັກ Ø...",
+            "unit": "ແມັດ",
+            "dim": "10×10 CM • ຍາວ ...m (ເຫຼັກ ...)"
+          }
+        },
+        {
+          "id": "col-series-10-custom-1794556872796",
+          "cadType": "col-10",
+          "lenBadge": "...M",
+          "isCustomAdded": true,
+          "vn": {
+            "name": "Cột 10 - ...m (Sắt ...)",
+            "shortName": "...m",
+            "tag": "Sắt Ø...",
+            "unit": "Mét",
+            "dim": "10×10 CM • Dài ...m (Sắt ...)"
+          },
+          "la": {
+            "name": "ເສົາ 10 - ...m (ເຫຼັກ ...)",
+            "shortName": "...m",
+            "tag": "ເຫຼັກ Ø...",
+            "unit": "ແມັດ",
+            "dim": "10×10 CM • ຍາວ ...m (ເຫຼັກ ...)"
+          }
+        }
+      ]
+    },
+    {
+      "seriesId": "col-series-12",
+      "cadType": "col-12",
+      "sectionDim": "12×12 CM",
+      "vn": {
+        "title": "CỘT 12",
+        "unit": "Mét",
+        "customMeter": "Dài: ......m",
+        "customSteel": "Sắt: Ø......"
+      },
+      "la": {
+        "title": "ເສົາ 12",
+        "unit": "ແມັດ",
+        "customMeter": "ຍາວ: ......m",
+        "customSteel": "ເຫຼັກ: Ø......"
+      },
+      "items": [
+        {
+          "id": "col-12-2.5m-nho",
+          "cadType": "col-12",
+          "lenBadge": "2.5M",
+          "vn": {
+            "name": "Cột 12 - 2.5m (Sắt nhỏ)",
+            "shortName": "2.5m",
+            "tag": "Sắt nhỏ",
+            "unit": "Mét",
+            "dim": "12×12cm • 2.5m (Sắt nhỏ)"
+          },
+          "la": {
+            "name": "ເສົາ 12 - 2.5m (ເຫຼັກນ້ອຍ)",
+            "shortName": "2.5m",
+            "tag": "ເຫຼັກນ້ອຍ",
+            "unit": "ແມັດ",
+            "dim": "12×12cm • 2.5m (ເຫຼັກນ້ອຍ)"
+          }
+        },
+        {
+          "id": "col-12-2.5m-to",
+          "cadType": "col-12",
+          "lenBadge": "2.5M",
+          "vn": {
+            "name": "Cột 12 - 2.5m (Sắt to)",
+            "shortName": "2.5m",
+            "tag": "Sắt to",
+            "unit": "Mét",
+            "dim": "12×12cm • 2.5m (Sắt to)"
+          },
+          "la": {
+            "name": "ເສົາ 12 - 2.5m (ເຫຼັກໃຫຍ່)",
+            "shortName": "2.5m",
+            "tag": "ເຫຼັກໃຫຍ່",
+            "unit": "ແມັດ",
+            "dim": "12×12cm • 2.5m (ເຫຼັກໃຫຍ່)"
+          }
+        },
+        {
+          "id": "col-12-3m",
+          "cadType": "col-12",
+          "lenBadge": "3.0M",
+          "vn": {
+            "name": "Cột 12 - 3m",
+            "shortName": "3.0m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "12×12cm • 3.0m"
+          },
+          "la": {
+            "name": "ເສົາ 12 - 3m",
+            "shortName": "3.0m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "12×12cm • 3.0m"
+          }
+        },
+        {
+          "id": "col-12-3.5m",
+          "cadType": "col-12",
+          "lenBadge": "3.5M",
+          "vn": {
+            "name": "Cột 12 - 3.5m",
+            "shortName": "3.5m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "12×12cm • 3.5m"
+          },
+          "la": {
+            "name": "ເສົາ 12 - 3.5m",
+            "shortName": "3.5m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "12×12cm • 3.5m"
+          }
+        },
+        {
+          "id": "col-12-4m",
+          "cadType": "col-12",
+          "lenBadge": "4.0M",
+          "vn": {
+            "name": "Cột 12 - 4m",
+            "shortName": "4.0m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "12×12cm • 4.0m"
+          },
+          "la": {
+            "name": "ເສົາ 12 - 4m",
+            "shortName": "4.0m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "12×12cm • 4.0m"
+          }
+        },
+        {
+          "id": "col-12-4.5m",
+          "cadType": "col-12",
+          "lenBadge": "4.5M",
+          "vn": {
+            "name": "Cột 12 - 4.5m",
+            "shortName": "4.5m",
+            "tag": "Chịu lực",
+            "unit": "Mét",
+            "dim": "12×12cm • 4.5m"
+          },
+          "la": {
+            "name": "ເສົາ 12 - 4.5m",
+            "shortName": "4.5m",
+            "tag": "ຮັບນ້ຳໜັກ",
+            "unit": "ແມັດ",
+            "dim": "12×12cm • 4.5m"
+          }
+        }
+      ]
+    },
+    {
+      "seriesId": "col-series-15",
+      "cadType": "col-15",
+      "sectionDim": "15×15 CM",
+      "vn": {
+        "title": "CỘT 15",
+        "unit": "Mét",
+        "customMeter": "Dài: ......m",
+        "customSteel": "Sắt: Ø......"
+      },
+      "la": {
+        "title": "ເສົາ 15",
+        "unit": "ແມັດ",
+        "customMeter": "ຍາວ: ......m",
+        "customSteel": "ເຫຼັກ: Ø......"
+      },
+      "items": [
+        {
+          "id": "col-15-3m",
+          "cadType": "col-15",
+          "lenBadge": "3.0M",
+          "vn": {
+            "name": "Cột 15 - 3m",
+            "shortName": "3.0m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "15×15cm • 3.0m"
+          },
+          "la": {
+            "name": "ເສົາ 15 - 3m",
+            "shortName": "3.0m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "15×15cm • 3.0m"
+          }
+        },
+        {
+          "id": "col-15-3.5m",
+          "cadType": "col-15",
+          "lenBadge": "3.5M",
+          "vn": {
+            "name": "Cột 15 - 3.5m",
+            "shortName": "3.5m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "15×15cm • 3.5m"
+          },
+          "la": {
+            "name": "ເສົາ 15 - 3.5m",
+            "shortName": "3.5m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "15×15cm • 3.5m"
+          }
+        },
+        {
+          "id": "col-15-4m",
+          "cadType": "col-15",
+          "lenBadge": "4.0M",
+          "vn": {
+            "name": "Cột 15 - 4m",
+            "shortName": "4.0m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "15×15cm • 4.0m"
+          },
+          "la": {
+            "name": "ເສົາ 15 - 4m",
+            "shortName": "4.0m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "15×15cm • 4.0m"
+          }
+        },
+        {
+          "id": "col-15-4.5m",
+          "cadType": "col-15",
+          "lenBadge": "4.5M",
+          "vn": {
+            "name": "Cột 15 - 4.5m",
+            "shortName": "4.5m",
+            "tag": "Sắt chuẩn",
+            "unit": "Mét",
+            "dim": "15×15cm • 4.5m"
+          },
+          "la": {
+            "name": "ເສົາ 15 - 4.5m",
+            "shortName": "4.5m",
+            "tag": "ມາດຕະຖານ",
+            "unit": "ແມັດ",
+            "dim": "15×15cm • 4.5m"
+          }
+        },
+        {
+          "id": "col-15-5m-sat10",
+          "cadType": "col-15",
+          "lenBadge": "5.0M",
+          "vn": {
+            "name": "Cột 15 - 5m (Sắt 10)",
+            "shortName": "5.0m",
+            "tag": "Sắt 10",
+            "unit": "Mét",
+            "dim": "15×15cm • 5.0m (Sắt 10)"
+          },
+          "la": {
+            "name": "ເສົາ 15 - 5m (ເຫຼັກ 10)",
+            "shortName": "5.0m",
+            "tag": "ເຫຼັກ 10",
+            "unit": "ແມັດ",
+            "dim": "15×15cm • 5.0m (ເຫຼັກ 10)"
+          }
+        },
+        {
+          "id": "col-15-5m-sat12",
+          "cadType": "col-15",
+          "lenBadge": "5.0M",
+          "vn": {
+            "name": "Cột 15 - 5m (Sắt 12)",
+            "shortName": "5.0m",
+            "tag": "Sắt 12",
+            "unit": "Mét",
+            "dim": "15×15cm • 5.0m (Sắt 12)"
+          },
+          "la": {
+            "name": "ເສົາ 15 - 5m (ເຫຼັກ 12)",
+            "shortName": "5.0m",
+            "tag": "ເຫຼັກ 12",
+            "unit": "ແມັດ",
+            "dim": "15×15cm • 5.0m (ເຫຼັກ 12)"
+          }
+        }
+      ]
+    }
+  ],
+  "uploadedPhotos": {
+    "brochure-brick-dac": {
+      "url": "images/Ga%CC%A3ch%20%C4%91a%CC%A3%CC%86c.png",
+      "fit": "contain",
+      "scale": 1.1,
+      "x": 5,
+      "y": 9,
+      "filter": "bw-crisp"
+    },
+    "cat24-brick-dac": {
+      "url": "images/Ga%CC%A3ch%20%C4%91a%CC%A3%CC%86c.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 2,
+      "filter": "bw-crisp"
+    },
+    "brochure-brick-lo": {
+      "url": "images/Ga%CC%A3ch%20lo%CC%82%CC%83.png",
+      "fit": "contain",
+      "scale": 1.2,
+      "x": -5,
+      "y": 13,
+      "filter": "bw-crisp"
+    },
+    "cat24-brick-lo": {
+      "url": "images/Ga%CC%A3ch%20lo%CC%82%CC%83.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 2,
+      "filter": "bw-crisp"
+    },
+    "brochure-brick-15": {
+      "url": "images/Ga%CC%A3ch%2015.png",
+      "fit": "contain",
+      "scale": 1.62,
+      "x": -5,
+      "y": 26,
+      "filter": "bw-crisp"
+    },
+    "cat24-brick-15": {
+      "url": "images/Ga%CC%A3ch%2015.png",
+      "fit": "contain",
+      "scale": 1.22,
+      "x": 0,
+      "y": 4,
+      "filter": "bw-crisp"
+    },
+    "brochure-brick-20": {
+      "url": "images/Ga%CC%A3ch%2020.png",
+      "fit": "cover",
+      "scale": 0.92,
+      "x": 0,
+      "y": -5,
+      "filter": "bw-crisp"
+    },
+    "cat24-brick-20": {
+      "url": "images/Ga%CC%A3ch%2020.png",
+      "fit": "contain",
+      "scale": 1.24,
+      "x": 0,
+      "y": 6,
+      "filter": "bw-crisp"
+    },
+    "series-col-series-10": {
+      "url": "images/Co%CC%A3%CC%82t%2010.png",
+      "fit": "contain",
+      "scale": 1.2,
+      "x": -10,
+      "y": 7,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-10-2m": {
+      "url": "images/Co%CC%A3%CC%82t%2010.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-10-2.5m": {
+      "url": "images/Co%CC%A3%CC%82t%2010.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "series-col-series-12": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.35,
+      "x": -5,
+      "y": 12,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-12-2.5m-nho": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-12-2.5m-to": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-12-3m": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-12-3.5m": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-12-4m": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-12-4.5m": {
+      "url": "images/Co%CC%A3%CC%82t%2012.png",
+      "fit": "contain",
+      "scale": 1.15,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "series-col-series-15": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": -7,
+      "y": 12,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-15-3m": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-15-3.5m": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-15-4m": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-15-4.5m": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-15-5m-sat10": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "cat24-col-15-5m-sat12": {
+      "url": "images/Co%CC%A3%CC%82t%2015.png",
+      "fit": "contain",
+      "scale": 1.18,
+      "x": 0,
+      "y": 0,
+      "filter": "bw-crisp"
+    },
+    "showcase-pipes": {
+      "url": "images/Co%CC%82%CC%81ng.png",
+      "fit": "contain",
+      "scale": 3,
+      "x": 1,
+      "y": -8,
+      "filter": "bw-crisp"
+    },
+    "cat24-pipe-20": {
+      "url": "images/Co%CC%82%CC%81ng.png",
+      "fit": "contain",
+      "scale": 1.58,
+      "x": 0,
+      "y": -4,
+      "filter": "bw-crisp"
+    },
+    "cat24-pipe-30": {
+      "url": "images/Co%CC%82%CC%81ng.png",
+      "fit": "contain",
+      "scale": 1.58,
+      "x": 0,
+      "y": -4,
+      "filter": "bw-crisp"
+    },
+    "cat24-pipe-40": {
+      "url": "images/Co%CC%82%CC%81ng.png",
+      "fit": "contain",
+      "scale": 1.58,
+      "x": 0,
+      "y": -4,
+      "filter": "bw-crisp"
+    },
+    "cat24-pipe-60": {
+      "url": "images/Co%CC%82%CC%81ng.png",
+      "fit": "contain",
+      "scale": 1.58,
+      "x": 0,
+      "y": -4,
+      "filter": "bw-crisp"
+    },
+    "showcase-tanks": {
+      "url": "images/Theng%20na%CC%A3%CC%82m.png",
+      "fit": "contain",
+      "scale": 2.5,
+      "x": 1,
+      "y": 14,
+      "filter": "bw-crisp"
+    },
+    "cat24-tank-80": {
+      "url": "images/Theng%20na%CC%A3%CC%82m.png",
+      "fit": "contain",
+      "scale": 1.48,
+      "x": 0,
+      "y": 2,
+      "filter": "bw-crisp"
+    },
+    "cat24-tank-100": {
+      "url": "images/Theng%20na%CC%A3%CC%82m.png",
+      "fit": "contain",
+      "scale": 1.48,
+      "x": 0,
+      "y": 2,
+      "filter": "bw-crisp"
+    }
+  }
+}
